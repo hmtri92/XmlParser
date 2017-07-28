@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+   <!DOCTYPE sql-map PUBLIC "-//iBATIS.com//DTD SQL Map 1.0//EN" "http://www.ibatis.com/dtd/sql-map.dtd">
+
+<sql-map name="TlsLicenceAuthSQL">
+
+    <result-map name="licauthtype_result" class="tls.ida.bean.licence.licenceauthorisation.TlsLicAuthTypeDTO">
+        <property name="strCode" column="code"/>
+        <property name="strDesc" column="descp"/>
+    </result-map>
+
+    <result-map name="blkListCnt_result" class="tls.ida.bean.licence.licenceauthorisation.TlsLicAuthDTO">
+        <property name="strCnt" column="cntBlk"/>
+        <property name="strClientID" column="clientid"/>
+        <property name="strApplnName" column="cname"/>
+        <property name="strNRIC" column="nricno"/>
+        <property name="strCaseRefNo" column="caseref"/>
+
+    </result-map>
+
+    <result-map name="strLicDesc_result" class="java.lang.String">
+        <property name="value" column="licdesc"/>
+    </result-map>
+
+    <result-map name="licCandFee_result" class="tls.ida.bean.licence.licenceauthorisation.TlsROCandFeeDTO">
+        <property name="strFeeCd" column="feecd"/>
+        <property name="strQnty" column="qnty"/>
+        <property name="strFeeAmt" column="feeamt"/>
+    </result-map>
+
+    <result-map name="licROEauthdtl_result" class="tls.ida.bean.licence.licenceauthorisation.TlsLicAuthDTO">
+        <property name="strTransID" column="examno"/>
+        <property name="strRoExamDt" column="examdt"/>
+        <property name="strRoExamTypeCd" column="examcd"/>
+        <property name="strRoExamTypeDesc" column="examdesc"/>
+        <property name="strRoTotCand" column="totcand"/>
+        <property name="strExamCondBy" column="examby"/>
+    </result-map>
+
+    <result-map name="licauthdtl_result" class="tls.ida.bean.licence.licenceauthorisation.TlsLicAuthDTO">
+        <property name="strTransID" column="transid"/>
+        <property name="strClientID" column="clientid"/>
+        <property name="strApplNo" column="applno"/>
+        <property name="strStatusCd" column="statuscd"/>
+        <property name="strStatusDesc" column="statusdesc"/>
+        <property name="strDuration" column="duration"/>
+        <property name="strFeeCd" column="feecd"/>
+        <property name="strFeeDesc" column="feedesc"/>
+        <property name="strOnlineID" column="onlineid"/>
+        <property name="lstRemarks" column="remarks"/>
+        <property name="strTempFee" column="initdiscfee"/>
+        <property name="strGSTInd" column="gstind"/>
+        <property name="strApplnName" column="applname"/>
+        <!-- start: Raymond 30Apr15-->
+        <property name="strCourierFee" column="courierFee"/>
+        <property name="strCourierFeeCd" column="courierFeeCd"/>
+        <!-- end: Raymond 30Apr15-->
+    </result-map>
+
+    <result-map name="lictacauthdtl_result" class="tls.ida.bean.licence.licenceauthorisation.TlsLicAuthDTO">
+        <property name="strTransID" column="transid"/>
+        <property name="strClientID" column="clientid"/>
+        <property name="strApplNo" column="applno"/>
+        <property name="strStatusCd" column="statuscd"/>
+        <property name="strStatusDesc" column="statusdesc"/>
+        <property name="strLicReqd" column="licreqd"/>
+        <property name="strSchemeType" column="schemetype"/>
+        <property name="strTempFee" column="initdiscfee"/>
+        <property name="strLicType" column="lictype"/>
+        <property name="strRecommResult" column="recomd"/>
+        <property name="strApplnName" column="applname"/>
+        <property name="lstRemarks" column="remarks"/>
+    </result-map>
+
+    <result-map name="enfordtl_result" class="tls.ida.bean.licence.licenceauthorisation.TlsLicAuthDTO">
+        <property name="strTransID" column="transid"/>
+        <property name="strClientID" column="clientid"/>
+        <property name="strCaseRefNo" column="caserefno"/>
+        <property name="strInvestOffId" column="investoffid"/>
+        <property name="strInvestOfficer" column="investoff"/>
+        <property name="strCompName" column="compname"/>
+        <property name="strStatusDesc" column="breachtypecd"/>
+        <property name="strOffenceType" column="offencetype"/>
+        <property name="strStatusDesc" column="offencetypecd"/>
+        <property name="strBreachType" column="breachtype"/>
+        <property name="strPenaltyAmt" column="penaltyfee"/>
+    </result-map>
+
+
+    <result-map name="licradioauthdtl_result" class="tls.ida.bean.licence.licenceauthorisation.TlsLicAuthDTO">
+        <property name="strTransID" column="transid"/>
+        <property name="strClientID" column="clientid"/>
+        <property name="strInitFeeInd" column="initind"/>
+        <property name="strNetFeeInd" column="netind"/>
+        <property name="strApplNo" column="applno"/>
+        <property name="strStatusCd" column="statuscd"/>
+        <property name="strStatusDesc" column="statusdesc"/>
+        <property name="strDuration" column="duration"/>
+        <property name="strFeeCd" column="feecd"/>
+        <property name="strFeeDesc" column="feedesc"/>
+        <property name="strOnlineID" column="onlineid"/>
+        <property name="lstRemarks" column="remarks"/>
+        <property name="strSNMRemks" column="snmremks"/>
+        <property name="strInitialFee" column="initfee"/>
+        <property name="strNetwrkFee" column="netwrkfee"/>
+        <property name="strStationFee" column="statfee"/>
+        <property name="strcallsignFee" column="callsignfee"/>
+        <property name="strFreqFee" column="freqfee"/>
+        <property name="strGSTInd" column="gstind"/>
+        <property name="strApplnName" column="applname"/>
+        <property name="strSBOProrate" column="prorate"/>        
+        <!-- start: Raymond 23Jul15-->
+        <property name="strCourierFee" column="courierFee"/>
+        <property name="strCourierFeeCd" column="courierFeeCd"/>
+        <property name="strCourierFeeInd" column="courierFeeInd"/>        
+        <!-- end: Raymond 23Jul15-->
+    </result-map>
+
+
+    <dynamic-mapped-statement name="getLicAuthType" result-map="licauthtype_result">
+     <!-- Amended to include same authorisation type to multiple licence groups
+         amended by pkarthi@scs.com.sg on 31-08-2005
+      -->
+    <!--
+        SELECT ITEM_CD code,
+            ITEM_DESC descp FROM
+        M_MASTER_DTL MD,M_MASTER_HDR MH
+        WHERE
+        MH.MSTR_TYPE = 'AUTHTYPE'
+        AND MH.MSTR_TYPE=MD.MSTR_TYPE
+        AND MD.ACCOUNT_TYPE IN (#strLicGrp#, 'ALL')
+    -->
+
+    SELECT
+      MD.ACCOUNT_TYPE code,
+      MD.ITEM_DESC descp
+	  FROM
+     M_MASTER_DTL MD
+     WHERE
+     MD.MSTR_TYPE = 'AUTHTYPE'
+     AND MD.ITEM_CD LIKE #strLicGrp#||'%'
+     <dynamic>
+         <isNotEqual property="strLicGrp" compareValue="ENF">
+            OR MD.ITEM_CD= 'ALL'
+          </isNotEqual>
+     </dynamic>
+    </dynamic-mapped-statement>
+
+
+    <dynamic-mapped-statement name="getlicauthdtl" result-map="licauthdtl_result">
+ SELECT LA.TRANS_ID transid,
+	LA.CLIENT_ID clientid,
+	LA.APPLICATION_NO applno,
+	LA.STATUS_CD statuscd,
+	MD.ITEM_DESC statusdesc,
+	LA.LICENCE_PERIOD duration,
+	LA.FEE_CD feecd,
+	MF.FEE_DESC feedesc,
+	LA.OASIS_ONLINE_ID onlineid,
+	LA.REMARKS remarks,
+	GET_INS_INITFEE(la.trans_id,#strLicGroup:varchar#,#strAuthType:varchar#,1) initdiscfee,
+	mf.gst_ind gstind,
+	LA.C_CONTACT_PERSON applname, 
+	<!-- Start: Raymond 30Apr15-->
+	(select CALCUL_TYPE_BASED_FEE from m_feecode where licence_type = #strLicenceType:varchar#
+	and status ='A' and fee_cd= LA.COURIER_FEE_CD and fee_calculation_type = '13') as courierFee
+	, LA.COURIER_FEE_CD  courierFeeCd
+    <!-- END: Raymond 30Apr15-->	
+	FROM LIC_APPLN LA, M_MASTER_DTL MD,M_FEECODE MF
+		 WHERE LA.LICENCE_GROUP= #strLicGroup:varchar#
+		 AND LA.LICENCE_TYPE=#strLicenceType:varchar#
+		 AND MD.ITEM_CD = LA.STATUS_CD
+		 AND MF.FEE_CD = LA.FEE_CD
+		 AND LA.STATUS_CD in ('NPA')
+		 and MD.MSTR_TYPE = 'APPTRNSTAT'
+         and la.created_by!=#userID#
+     ORDER BY la.client_id,la.licence_type,la.application_no
+    </dynamic-mapped-statement>
+
+    <dynamic-mapped-statement name="gettaclicauthdtl" result-map="lictacauthdtl_result">
+	SELECT
+	LA.TRANS_ID transid,
+	LA.CLIENT_ID clientid,
+	LA.APPLICATION_NO applno,
+	LA.STATUS_CD statuscd,
+	MD.ITEM_DESC statusdesc,
+	LA.LICENCE_REQUIRED_IND licreqd,
+    LA.REMARKS remarks,
+        <!--	LA.SCHEME_TYPE_CD schemetype,-->
+  nvl((SELECT MMD.ITEM_DESC FROM M_MASTER_DTL MMD WHERE MMD.MSTR_TYPE='SCHTYP' AND MMD.STATUS='A'
+                                                                AND MMD.ITEM_CD=LA.SCHEME_TYPE_CD),'-') AS schemetype,
+	LA.licence_type licType,
+	GET_INS_INITFEE(la.trans_id,#strLicGroup:varchar#,#strAuthType:varchar#,1) initdiscfee,
+	TI.eval_officer_recomd recomd,
+	LA.C_CONTACT_PERSON applname
+  	   FROM LIC_APPLN LA,TAC_EQUIP_INFO TI,M_MASTER_DTL MD
+		WHERE 
+			LA.TRANS_ID = TI.TRANS_ID (+)
+			AND MD.ITEM_CD = LA.STATUS_CD(+)
+			and (MD.MSTR_TYPE is null or MD.MSTR_TYPE = 'APPTRNSTAT')
+			and LA.LICENCE_GROUP= #strLicGroup#
+			AND LA.LICENCE_TYPE=#strLicenceType#
+			AND LA.STATUS_CD in ('NPA')
+            and la.created_by!=#userID#
+        ORDER BY la.client_id,la.licence_type,la.application_no
+    </dynamic-mapped-statement>
+
+    <dynamic-mapped-statement name="getTMAuthDtl" result-map="lictacauthdtl_result">
+	SELECT
+	LA.TRANS_ID transid,
+	LA.CLIENT_ID clientid,
+	LA.APPLICATION_NO applno,
+	LA.STATUS_CD statuscd,
+	MD.ITEM_DESC statusdesc,
+	LA.LICENCE_REQUIRED_IND licreqd,
+	LA.SCHEME_TYPE_CD schemetype,
+	LA.licence_type licType,
+	GET_INS_INITFEE(la.trans_id,#strLicGroup:varchar#,#strAuthType:varchar#,1) initdiscfee,
+	TI.eval_officer_recomd recomd,
+	LA.C_CONTACT_PERSON applname,
+	LA.REMARKS remarks
+  	   FROM LIC_APPLN LA,TAC_EQUIP_INFO TI,M_MASTER_DTL MD
+		WHERE 
+			LA.TRANS_ID = TI.TRANS_ID (+)
+			AND MD.ITEM_CD = LA.STATUS_CD(+)
+			and (MD.MSTR_TYPE is null or MD.MSTR_TYPE = 'APPTRNSTAT')
+			and LA.LICENCE_GROUP= #strLicGroup#
+			AND LA.LICENCE_TYPE=#strLicenceType#
+			AND LA.STATUS_CD in ('APA','RAPA')
+       ORDER BY la.client_id,la.licence_type,la.application_no
+    </dynamic-mapped-statement>
+
+    <dynamic-mapped-statement name="getradiolicauthdtl" result-map="licradioauthdtl_result">
+ SELECT LA.TRANS_ID transid,
+	LA.CLIENT_ID clientid,
+	LA.AMEND_AUT_AP_FEE_INCLUDE_IND initind,
+	LA.AMEND_AUT_NET_FEE_INCLUDE_IND netind,
+	LA.APPLICATION_NO applno,
+	LA.STATUS_CD statuscd,
+	MD.ITEM_DESC statusdesc,
+	LA.LICENCE_PERIOD duration,
+	LA.FEE_CD feecd,
+	MF.FEE_DESC feedesc,
+	LA.OASIS_ONLINE_ID onlineid,
+	LA.REMARKS remarks,
+	nvl(LA.SNM_REMARKS,0) snmremks,
+	GET_INS_INITFEE(la.trans_id,#strLicGroup:varchar#,#strAuthType:varchar#,1) initfee,
+	GET_INS_NETWORKFEE(la.trans_id,#strAuthType:varchar#,#strLicGroup:varchar#,NULL,NULL,1) netwrkfee,
+	GET_INS_STATIONFEE(la.trans_id,#strAuthType:varchar#,#strLicGroup:varchar#,NULL,NULL,1) statfee,
+	GET_INS_CALLSIGNFEE(la.trans_id,#strAuthType:varchar#,#strLicGroup:varchar#,NULL,NULL,#strLicenceType:varchar#,1) callsignfee,
+	GET_INS_FREQFEE(la.trans_id,#strAuthType:varchar#,#strLicGroup:varchar#,NULL,NULL,1) freqfee,
+	mf.gst_ind gstind,
+	LA.C_CONTACT_PERSON applname,
+    '1' as prorate
+	<!-- Start: Raymond 23Jul15-->
+	, '0' as courierFee
+	, '' as courierFeeCd
+	, '' as courierFeeInd
+    <!-- END: Raymond 23Jul15-->	    
+	FROM LIC_APPLN LA, M_MASTER_DTL MD, M_FEECODE MF
+		 WHERE LA.LICENCE_GROUP= #strLicGroup:varchar#
+		 AND LA.LICENCE_TYPE=#strLicenceType:varchar#
+		 AND MD.ITEM_CD = LA.STATUS_CD
+		 AND MF.FEE_CD = LA.FEE_CD
+		 AND LA.STATUS_CD in ('NPA')
+        <!-- Added as per nagaraj's request on 26/07/2005 by pkarthi@scs.com.sg -->
+         AND LA.TRANS_TYPE != 'MANBILL'
+		 and MD.MSTR_TYPE = 'APPTRNSTAT'
+         and la.created_by!=#userID#
+      ORDER BY la.client_id,la.licence_type,la.application_no
+    </dynamic-mapped-statement>
+
+    <dynamic-mapped-statement name="getAALicAuthDtl" result-map="licradioauthdtl_result">
+ SELECT LA.TRANS_ID transid,
+	LA.CLIENT_ID clientid,
+	LA.AMEND_AUT_AP_FEE_INCLUDE_IND initind,
+	LA.AMEND_AUT_NET_FEE_INCLUDE_IND netind,
+	LA.APPLICATION_NO applno,
+	LA.STATUS_CD statuscd,
+	MD.ITEM_DESC statusdesc,
+	LA.LICENCE_PERIOD duration,
+	LA.FEE_CD feecd,
+	MF.FEE_DESC feedesc,
+	LA.OASIS_ONLINE_ID onlineid,
+	LA.REMARKS remarks,
+	LA.SNM_REMARKS snmremks,
+	GET_INS_INITFEE(la.trans_id,#strLicGroup:varchar#,#strAuthType:varchar#,1) initfee,
+	GET_INS_NETWORKFEE(la.trans_id,#strAuthType:varchar#,#strLicGroup:varchar#,NULL,NULL,1) netwrkfee,
+	GET_INS_STATIONFEE(la.trans_id,#strAuthType:varchar#,#strLicGroup:varchar#,NULL,NULL,1) statfee,
+	GET_INS_CALLSIGNFEE(la.trans_id,#strAuthType:varchar#,#strLicGroup:varchar#,NULL,NULL,#strLicenceType:varchar#,1) callsignfee,
+	GET_INS_FREQFEE(la.trans_id,#strAuthType:varchar#,#strLicGroup:varchar#,NULL,NULL,1) freqfee,
+	mf.gst_ind gstind,
+	LA.C_CONTACT_PERSON applname,
+    GET_ANNUAL_FEE_PRORATE(LA.TRANS_ID) AS prorate     
+	<!-- Start: Raymond 23Jul15-->
+	, (select CALCUL_TYPE_BASED_FEE from m_feecode where licence_type = #strLicenceType:varchar#
+	and status ='A' and fee_cd= LA.COURIER_FEE_CD and fee_calculation_type = '13') as courierFee
+	, LA.COURIER_FEE_CD  courierFeeCd, AMEND_AUT_COURIER_FEE_INCL_IND courierFeeInd 
+    <!-- END: Raymond 23Jul15-->	    
+	FROM LIC_APPLN LA, M_MASTER_DTL MD, M_FEECODE MF
+		 WHERE LA.LICENCE_GROUP= #strLicGroup:varchar#
+		 AND LA.LICENCE_TYPE=#strLicenceType:varchar#
+		 AND MD.ITEM_CD = LA.STATUS_CD
+		 AND MF.FEE_CD = LA.FEE_CD
+		 AND LA.STATUS_CD in ('APA','RAPA')
+        <!-- Added as per nagaraj's request on 26/07/2005 by pkarthi@scs.com.sg -->
+         AND LA.TRANS_TYPE != 'MANBILL'
+		and MD.MSTR_TYPE = 'APPTRNSTAT'
+    ORDER BY la.client_id,la.licence_type,la.application_no
+    </dynamic-mapped-statement>
+
+
+    <dynamic-mapped-statement name="getNELicDtl" result-map="enfordtl_result">
+SELECT EI.ENFORCEMENT_NO transid, 
+	EI.CLIENT_ID clientid,
+	EI.CASE_REF_NO caserefno,
+	EI.INVESTIGATION_OFFICER_ID investoffid,
+	SC.USER_NAME investoff,
+	nvl(GETCOMPANY_NAME(C.CLIENT_ID),'-') compname, 
+	ei.NATURE_BREACH breachtypecd,
+	MD1.ITEM_DESC offencetype,
+	ei.NATURE_OFFENCE offencetypecd,
+	MD2.ITEM_DESC breachtype,
+	NVL(EI.BREACH_FEE_AMT,0) + NVL(EI.OFFENCE_FEE_AMT,0) penaltyfee
+	FROM ENFORCEMENT_INFO EI,
+	CLIENT C,M_MASTER_DTL MD, M_MASTER_DTL MD1, M_MASTER_DTL MD2,
+	SC_USER_PROFILE SC
+	  WHERE EI.CLIENT_ID = C.CLIENT_ID(+)
+		AND EI.ENFORCEMENT_STATUS = MD.ITEM_CD (+)
+		and (MD.MSTR_TYPE is null or MD.MSTR_TYPE = 'ENFSTATUS')
+		and EI.NATURE_OFFENCE =  MD1.item_cd(+)
+		and ( MD1.MSTR_TYPE is null or md1.MSTR_TYPE = 'NATOFFENCE')
+		and  EI.NATURE_BREACH = MD2.item_cd(+)
+		and (MD2.MSTR_TYPE is null or MD2.MSTR_TYPE = 'NATBREACH')
+		and EI.ENFORCEMENT_STATUS='NPA'  
+		and ei.INVESTIGATION_OFFICER_ID = sc.user_id
+        and ei.created_by!=#userID#
+    order by ei.CLIENT_ID,ei.ENFORCEMENT_CATEGORY,ei.ENFORCEMENT_NO
+    </dynamic-mapped-statement>
+
+    <dynamic-mapped-statement name="getAELicDtl" result-map="enfordtl_result">
+SELECT EI.ENFORCEMENT_NO transid, 
+	EI.CLIENT_ID clientid,
+	EI.CASE_REF_NO caserefno,
+	EI.INVESTIGATION_OFFICER_ID investoffid,
+	SC.USER_NAME investoff,
+	nvl(GETCOMPANY_NAME(C.CLIENT_ID),'-') compname, 
+	ei.NATURE_BREACH breachtypecd,
+	MD1.ITEM_DESC offencetype,
+	ei.NATURE_OFFENCE offencetypecd,
+	MD2.ITEM_DESC breachtype,
+	decode(md3.ACCOUNT_TYPE,'F',
+	 ((nvl(ei.breach_fee_amt,0) - nvl(ei.REDUCED_BREACH_AMT,0)) +	
+     (nvl(ei.offence_fee_amt,0) - nvl(ei.reduced_offence_amt,0))),'R',
+	 ((nvl(ei.breach_fee_amt,0) - nvl(ei.REDUCED_BREACH_AMT,0)) +
+	    (nvl(ei.offence_fee_amt,0) - nvl(ei.reduced_offence_amt,0))),0) penaltyfee
+	FROM ENFORCEMENT_INFO EI,
+	CLIENT C,M_MASTER_DTL MD, M_MASTER_DTL MD1, M_MASTER_DTL MD2, M_MASTER_DTL MD3,
+		SC_USER_PROFILE SC
+		WHERE EI.CLIENT_ID = C.CLIENT_ID(+)
+		AND EI.ENFORCEMENT_STATUS = MD.ITEM_CD (+)
+		and (MD.MSTR_TYPE is null or MD.MSTR_TYPE = 'ENFSTATUS')
+		AND EI.APPEAL_OUTCOME = MD3.ITEM_CD (+)
+		and (MD3.MSTR_TYPE is null or MD3.MSTR_TYPE = 'ENFAPPOTCM')
+		and EI.NATURE_OFFENCE =  MD1.item_cd(+)
+		and ( MD1.MSTR_TYPE is null or md1.MSTR_TYPE = 'NATOFFENCE')
+		and  EI.NATURE_BREACH = MD2.item_cd(+)
+		and (MD2.MSTR_TYPE is null or MD2.MSTR_TYPE = 'NATBREACH')
+		and EI.ENFORCEMENT_STATUS='APA'
+		and ei.INVESTIGATION_OFFICER_ID = sc.USER_ID
+        and ei.created_by!=#userID#
+    order by ei.CLIENT_ID,ei.ENFORCEMENT_CATEGORY,ei.ENFORCEMENT_NO
+    </dynamic-mapped-statement>
+
+    <dynamic-mapped-statement name="getROCAuthDtl" result-map="licROEauthdtl_result">
+	 SELECT
+          RO.exam_no examno,
+          TO_CHAR(RO.exam_date,'DD/MM/YYYY') examdt,
+          RO.exam_type examcd,
+          MD1.item_desc examdesc,
+          count(RC.exam_cand_no) totcand,
+          RO.EXAM_CONDUCTED_BY_CLIENT_ID examby
+          FROM RO_EXAM_INFO RO, RO_EXAM_CAND_DTLS RC, M_MASTER_DTL MD1, M_MASTER_DTL MD2
+          WHERE RO.EXAM_BILLING_STATUS ='PB'
+          AND RO.EXAM_NO = RC.EXAM_NO
+           AND (RO.EXAM_TYPE = MD1.ITEM_CD and MD1.MSTR_TYPE = 'ROPEXAMTYP')
+  		  and (RO.EXAM_BILLING_STATUS = MD2.ITEM_CD AND MD2.MSTR_TYPE ='ROEXAMST')
+          and ro.created_by!=#userID#
+
+          GROUP BY RO.EXAM_TYPE, ro.exam_no,ro.exam_date,ro.exam_type, md1.item_desc,
+          ro.exam_conducted_by_client_id
+
+    </dynamic-mapped-statement>
+
+    <dynamic-mapped-statement name="getROCandFee" result-map="licCandFee_result">
+   SELECT rc.EXAM_FEE_CD feecd, count(rc.EXAM_FEE_CD) qnty,
+     get_fee(rc.EXAM_FEE_CD, #strLicGroup:varchar#,1,NULL) feeamt
+	  FROM RO_EXAM_INFO ri, RO_EXAM_CAND_DTLS rc 
+	  WHERE 
+	     ri.exam_no=#strTransID:NUMBER#
+	     and rc.EXAM_NO = ri.exam_no 
+		 GROUP BY rc.exam_fee_cd
+    </dynamic-mapped-statement>
+
+
+    <mapped-statement name="getBlkList" result-map="blkListCnt_result">
+select count(*) cntBlk,
+      ai.CLIENT_ID clientid, 
+      mb.NAME cname,
+      mb.NRIC_PASSPORT_NO nricno,
+      mb.CASE_REF caseref
+      from M_BLACKLIST mb, applicant_agent_info ai
+       where mb.NRIC_PASSPORT_NO IN (select ai.APPLT_AGENT_NRIC_PASSPORT_NO 
+	  from applicant_agent_info ai 
+	  where ai.CLIENT_ID= #strClientID#)
+  	  and ai.client_id=#strClientID#
+	 group by ai.client_id,mb.name, mb.nric_passport_no, mb.CASE_REf
+    </mapped-statement>
+
+
+    <mapped-statement name="getLicDesc" result-map="strLicDesc_result">
+   select lt.LICENCE_TYPE || '  -  ' || lt.LIC_DESC licdesc
+      from m_licence_type lt
+      where lt.LICENCE_TYPE=#strLicenceType:varchar#
+    </mapped-statement>
+
+    <mapped-statement name="updtLicReqd">
+   update lic_appln
+     set LICENCE_REQUIRED_IND=#strLicReqd#
+     where trans_id=#strTransID#
+    </mapped-statement>
+
+    <mapped-statement name="updtRejStation">
+   update STATION_INFO
+     set version_status='R'
+      where trans_id=#strTransID#
+      and version_status='P'
+    </mapped-statement>
+
+    <mapped-statement name="updtRejFreq">
+   update FREQUENCY_INFO
+     set version_status='R'
+      where trans_id=#strTransID#
+      and version_status='P'
+    </mapped-statement>
+
+    <!--To get the applicant email id for email notifications-->
+    <mapped-statement name="getApplicantEmailID" result-class="String">
+     select C_EMAIL from lic_appln where trans_id=#transID#
+    </mapped-statement>
+
+    <!--To get the info for sending mail to authorising officer and licence applicant-->
+    <mapped-statement name="getAuthOffEmailContent" result-class="java.util.HashMap">
+      SELECT
+	   TO_CHAR(LICA.DATE_APPLICATION,'DD/MM/YYYY HH24:MI') AS APPLICATION_DATE,
+       LICA.TRANS_ID,
+       TO_CHAR(LICA.CLIENT_ID) as CLIENT_ID,
+	   GETCOMPANY_NAME(LICA.CLIENT_ID) as COMPANY_NAME,
+       (SELECT M_LICENCE_TYPE.LIC_DESC FROM M_LICENCE_TYPE WHERE LICENCE_TYPE =
+	                                                                LICA.LICENCE_TYPE AND STATUS='A') AS LICENCE_TYPE,
+       LICA.LICENCE_TYPE AS LICENCE_TYPE_CD,
+       TO_CHAR(LICA.APPLICATION_NO) AS APPLICATION_NO,
+	   AAI.APPLT_AGENT_EMAIL AS AGENT_EMAIL,
+	   AAI.APPLT_AGENT_NAME AS AGENT_NAME,
+	   LICA.UPDATED_BY AS AUTHOR_OFFICER,
+       MIDAC.CONTACT_PERSON1 AS LIC_INCHARGE,
+  	   MIDAC.CONTACT_TEL_NO1 AS LIC_INC_TEL,
+	   LICA.EMAIL_REMARKS as REMARKS,
+	   <!-- 20090203 William : to get the latest remarks(reject)  -->
+	   LICA.REMARKS as LATEST_REMARKS
+	   <!-- 20090203 William : to get the latest remarks(reject)  end-->
+      FROM LIC_APPLN LICA, APPLICANT_AGENT_INFO AAI,M_IDA_CONTACT_NO  MIDAC, CLIENT CLT
+	  WHERE
+          AAI.CLIENT_ID=LICA.CLIENT_ID
+  	  AND AAI.APPLT_AGENT_NO = LICA.APPLT_AGENT_NO
+	  AND LICA.TRANS_ID=#transID#
+      AND LICA.LICENCE_TYPE= MIDAC.LICENCE_TYPE (+) 
+	  AND CLT.CLIENT_ID = LICA.CLIENT_ID
+	UNION ALL
+	  SELECT
+	   TO_CHAR(LICA.ENFORCEMENT_DATE,'DD/MM/YYYY HH24:MI') AS APPLICATION_DATE,
+       LICA.ENFORCEMENT_NO,
+       TO_CHAR(LICA.CLIENT_ID) as CLIENT_ID,
+	   GETCOMPANY_NAME(LICA.CLIENT_ID) as COMPANY_NAME,
+       (SELECT M_LICENCE_TYPE.LIC_DESC FROM M_LICENCE_TYPE WHERE LICENCE_TYPE =
+	                                                                'ENF' AND STATUS='A') AS LICENCE_TYPE,
+       'ENF' AS LICENCE_TYPE_CD,
+       TO_CHAR(LICA.ENFORCEMENT_NO) AS APPLICATION_NO,
+	   AAI.APPLT_AGENT_EMAIL AS AGENT_EMAIL,
+	   AAI.APPLT_AGENT_NAME AS AGENT_NAME,
+	   LICA.UPDATED_BY AS AUTHOR_OFFICER,
+       MIDAC.CONTACT_PERSON1 AS LIC_INCHARGE,
+       LICA.REMARKS,
+  	   MIDAC.CONTACT_TEL_NO1 AS LIC_INC_TEL,
+  	   <!-- 20090203 William : to get the latest remarks(reject)  -->
+  	   '' AS LATEST_REMARKS
+  	   <!-- 20090203 William : to get the latest remarks(reject)  end-->
+      FROM ENFORCEMENT_INFO LICA, APPLICANT_AGENT_INFO AAI,M_IDA_CONTACT_NO  MIDAC, CLIENT CLT
+	  WHERE
+          AAI.CLIENT_ID=LICA.CLIENT_ID
+  	  AND AAI.APPLT_AGENT_NO = LICA.APPLT_AGENT_NO
+	  AND LICA.ENFORCEMENT_NO=#transID#
+      AND MIDAC.LICENCE_TYPE ='ENF' 
+	  AND CLT.CLIENT_ID = LICA.CLIENT_ID
+    </mapped-statement>
+
+<!--    To get the ROE after authorisation notification email content-->
+    <mapped-statement name="getROEAuthOffEmailContent" result-class="java.util.HashMap" >
+	  SELECT TO_CHAR(ROI.EXAM_DATE,'DD/MM/YYYY') AS EXAM_DATE,
+	    ROI.EXAM_NO,
+		TO_CHAR(ROI.EXAM_CONDUCTED_BY_CLIENT_ID) AS CLIENT_ID,
+		GETCOMPANY_NAME(ROI.EXAM_CONDUCTED_BY_CLIENT_ID) as EXAM_CONDUCTED_BY,
+		(SELECT ITEM_DESC FROM M_MASTER_DTL WHERE MSTR_TYPE='ROPEXAMTYP' AND ITEM_CD = ROI.EXAM_TYPE AND STATUS='A') AS EXAM_TYPE,
+		'ROE' AS LICENCE_TYPE_CD,
+		ROI.UPDATED_BY AS AUTHOR_OFFICER
+	   FROM RO_EXAM_INFO ROI WHERE ROI.EXAM_NO=#transID#
+    </mapped-statement>
+
+   <!--    To get the Authorised Licence's pending Invoice No. Used in notification email -->
+    <mapped-statement name="getAuthLicInvNo" result-class="java.lang.String">
+      SELECT
+            NVL(INVH.INVOICE_NO,'-')
+       FROM
+             INVOICE_HDR INVH
+      WHERE  INVH.TRANS_ID=#value#
+        AND INVH.INVOICE_TYPE_CD='NL' AND INVH.STATUS='N'
+        AND ROWNUM=1
+    </mapped-statement>
+</sql-map>
