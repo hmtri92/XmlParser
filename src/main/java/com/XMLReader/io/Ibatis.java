@@ -1,4 +1,4 @@
-package com.XMLReader;
+package com.XMLReader.io;
 
 public class Ibatis {
 
