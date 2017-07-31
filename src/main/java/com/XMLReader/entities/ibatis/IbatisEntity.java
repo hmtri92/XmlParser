@@ -3,23 +3,33 @@ package com.XMLReader.entities.ibatis;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement( name = "sql-map")
 public class IbatisEntity {
 	
+	@XmlAttribute
 	String name;
+	
+	@XmlElement( name = "result-map")
 	List<ResultMap> resultMaps;
+	
+	@XmlElement( name = "dynamic-mapped-statement")
 	List<DynamicMappedStatement> dynamicMappedStatements;
+	
+	@XmlElement( name = "mapped-statement")
 	List<MappedStatement> mappedStatements;
 
 	public String getName() {
 		return name;
 	}
 
-	@XmlAttribute
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -28,7 +38,6 @@ public class IbatisEntity {
 		return resultMaps;
 	}
 
-	@XmlElement( name = "result-map")
 	public void setResultMaps(List<ResultMap> resultMaps) {
 		this.resultMaps = resultMaps;
 	}
@@ -45,7 +54,6 @@ public class IbatisEntity {
 		return dynamicMappedStatements;
 	}
 
-	@XmlElement( name = "dynamic-mapped-statement")
 	public void setDynamicMappedStatements(
 			List<DynamicMappedStatement> dynamicMappedStatements) {
 		this.dynamicMappedStatements = dynamicMappedStatements;
@@ -63,7 +71,6 @@ public class IbatisEntity {
 		return mappedStatements;
 	}
 
-	@XmlElement( name = "mapped-statement")
 	public void setMappedStatements(List<MappedStatement> mappedStatements) {
 		this.mappedStatements = mappedStatements;
 	}

@@ -1,19 +1,24 @@
 package com.XMLReader.io;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class Reader {
+public class Reader {
 	
-	FileReader fr = null;
-	
-	public FileReader read(String fileName) {
-		try {
-			fr = new FileReader(fileName);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+	public List<String> getXMLFiles(String folderPath) {
+		File file = new File(folderPath);
+		File[] files = file.listFiles(
+				(dir, name) -> {
+					return name.toLowerCase().endsWith(".xml");
+				});
+		
+		List<String> lstFileName = new ArrayList<String>();
+		for (File item : files) {
+			lstFileName.add(item.getAbsolutePath());
 		}
-		return fr;
+		
+		return lstFileName;
 	}
 
 }

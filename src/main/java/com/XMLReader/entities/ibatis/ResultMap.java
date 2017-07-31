@@ -1,46 +1,46 @@
 package com.XMLReader.entities.ibatis;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement( name = "result-map" )
 public class ResultMap {
 
+	@XmlElement( name = "property")
 	List<Property> properties;
+	
+	@XmlAttribute (name = "class")
+	String EntityClass;
 	
 	public List<Property> getProperties() {
 		return properties;
 	}
 
-	@XmlElement( name = "property")
 	public void setProperties(List<Property> properties) {
 		this.properties = properties;
 	}
-
-	@XmlRootElement( name = "property" )
-	class Property {
-		String name;
-		String EntityClass;
-		
-		public String getName() {
-			return name;
+	
+	public void addProperties(Property property) {
+		if (properties == null) {
+			properties = new ArrayList<Property>();
 		}
 		
-		@XmlAttribute (name = "name")
-		public void setName(String name) {
-			this.name = name;
-		}
-		
-		public String getEntityClass() {
-			return EntityClass;
-		}
-		
-		@XmlAttribute (name = "class")
-		public void setEntityClass(String entityClass) {
-			EntityClass = entityClass;
-		}
+		properties.add(property);
 	}
+	
+	public String getEntityClass() {
+		return EntityClass;
+	}
+	
+	public void setEntityClass(String entityClass) {
+		EntityClass = entityClass;
+	}
+
 }

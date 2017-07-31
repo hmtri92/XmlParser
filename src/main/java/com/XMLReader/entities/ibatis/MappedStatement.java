@@ -1,19 +1,24 @@
 package com.XMLReader.entities.ibatis;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement( name = "mapped-statement")
 public class MappedStatement {
 
+	@XmlAttribute( name = "name")
 	String name;
+	
+	@XmlAttribute( name = "result-map")
 	String resultMap;
 	
 	public String getName() {
 		return name;
 	}
 	
-	@XmlAttribute( name = "name")
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -22,7 +27,6 @@ public class MappedStatement {
 		return resultMap;
 	}
 	
-	@XmlAttribute( name = "result-map")
 	public void setResultMap(String resultMap) {
 		this.resultMap = resultMap;
 	}

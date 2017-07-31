@@ -1,5 +1,7 @@
 package com.XMLReader;
 
+import com.XMLReader.controller.Ibatis;
+
 /**
  * Hello world!
  *
@@ -8,6 +10,10 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+    	String dir = "D:/workspace_spring/XMLReader/testData";
+        Ibatis ibatis = new Ibatis(dir);
+        ibatis.getIbatisFile();
+        
+        ibatis.test();
     }
 }
