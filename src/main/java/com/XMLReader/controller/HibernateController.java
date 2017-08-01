@@ -9,7 +9,6 @@ import javax.xml.stream.XMLStreamReader;
 
 import com.XMLReader.entities.XMLEntity;
 import com.XMLReader.entities.hibernate.HibernateEntity;
-import com.XMLReader.entities.ibatis.IbatisEntity;
 
 public class HibernateController extends BaseController {
 
@@ -37,8 +36,8 @@ public class HibernateController extends BaseController {
 		getLstEntity().forEach(item -> {
 			if (item instanceof HibernateEntity) {
 				HibernateEntity entity = (HibernateEntity)item;
-				System.out.println(entity.getClass().getName());
-				System.out.println(entity.getClass());
+				System.out.println(entity.getLstEntityClass().get(0).getName());
+				System.out.println(entity.getLstEntityClass().get(0).getValue());
 			}
 		});
 	}

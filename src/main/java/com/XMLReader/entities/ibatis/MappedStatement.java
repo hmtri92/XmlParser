@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlValue;
 
 import com.XMLReader.entities.XMLEntity;
 
@@ -16,6 +17,9 @@ public class MappedStatement implements XMLEntity {
 	
 	@XmlAttribute( name = "result-map")
 	String resultMap;
+	
+	@XmlValue
+	String value;
 	
 	public String getName() {
 		return name;
@@ -31,6 +35,14 @@ public class MappedStatement implements XMLEntity {
 	
 	public void setResultMap(String resultMap) {
 		this.resultMap = resultMap;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
 	}
 	
 }

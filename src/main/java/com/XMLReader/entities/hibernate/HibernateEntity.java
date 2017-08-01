@@ -6,6 +6,8 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.XMLReader.entities.XMLEntity;
@@ -20,9 +22,11 @@ import com.XMLReader.entities.XMLEntity;
 public class HibernateEntity implements XMLEntity {
 
 	@XmlElement (name = "class")
+	@XmlMixed
 	List<EntityClass> lstEntityClass;
 		
-	@XmlElement (name = "sql-query")
+	@XmlElementRef (name = "sql-query")
+	@XmlMixed
 	List<SqlQuery> lstSqlQuery;
 
 	public List<EntityClass> getLstEntityClass() {

@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlValue;
 
 import com.XMLReader.entities.XMLEntity;
 
@@ -20,6 +21,9 @@ public class SqlQuery implements XMLEntity {
 
 	@XmlElement (name = "return-scalar")
 	List<ReturnScalar> lstReturnScaler;
+	
+	@XmlValue
+	String value;
 
 	public String getName() {
 		return name;
@@ -43,5 +47,13 @@ public class SqlQuery implements XMLEntity {
 		}
 		
 		lstReturnScaler.add(returnScalar);
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
 	}
 }
