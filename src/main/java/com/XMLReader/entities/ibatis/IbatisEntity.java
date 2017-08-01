@@ -8,11 +8,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
-@XmlAccessorType(XmlAccessType.FIELD)
+import com.XMLReader.entities.XMLEntity;
+
+@XmlAccessorType( XmlAccessType.FIELD )
 @XmlRootElement( name = "sql-map")
-public class IbatisEntity {
+public class IbatisEntity implements XMLEntity {
 	
 	@XmlAttribute
 	String name;

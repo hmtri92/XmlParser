@@ -6,16 +6,16 @@ import java.util.List;
 
 public class Reader {
 	
-	public List<String> getXMLFiles(String folderPath) {
+	public List<File> getXMLFiles(String folderPath) {
 		File file = new File(folderPath);
 		File[] files = file.listFiles(
 				(dir, name) -> {
 					return name.toLowerCase().endsWith(".xml");
 				});
 		
-		List<String> lstFileName = new ArrayList<String>();
+		List<File> lstFileName = new ArrayList<File>();
 		for (File item : files) {
-			lstFileName.add(item.getAbsolutePath());
+			lstFileName.add(item);
 		}
 		
 		return lstFileName;

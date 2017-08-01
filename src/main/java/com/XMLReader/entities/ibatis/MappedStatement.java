@@ -5,9 +5,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.XMLReader.entities.XMLEntity;
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement( name = "mapped-statement")
-public class MappedStatement {
+public class MappedStatement implements XMLEntity {
 
 	@XmlAttribute( name = "name")
 	String name;

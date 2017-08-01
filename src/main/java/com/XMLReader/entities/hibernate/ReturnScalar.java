@@ -1,4 +1,4 @@
-package com.XMLReader.entities.ibatis;
+package com.XMLReader.entities.hibernate;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -7,23 +7,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.XMLReader.entities.XMLEntity;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement( name = "property" )
-public class Property implements XMLEntity {
-
-	@XmlAttribute (name = "name")
-	String name;
+@XmlAccessorType (XmlAccessType.FIELD)
+@XmlRootElement (name = "return-scalar")
+public class ReturnScalar implements XMLEntity {
 	
 	@XmlAttribute (name = "column")
 	String column;
 	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
+	@XmlAttribute (name = "type")
+	String type;
 
 	public String getColumn() {
 		return column;
@@ -32,5 +24,13 @@ public class Property implements XMLEntity {
 	public void setColumn(String column) {
 		this.column = column;
 	}
-	
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 }

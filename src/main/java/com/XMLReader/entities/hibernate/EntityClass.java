@@ -1,4 +1,4 @@
-package com.XMLReader.entities.ibatis;
+package com.XMLReader.entities.hibernate;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -7,30 +7,30 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.XMLReader.entities.XMLEntity;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement( name = "property" )
-public class Property implements XMLEntity {
+@XmlAccessorType (XmlAccessType.FIELD)
+@XmlRootElement (name = "class")
+public class EntityClass implements XMLEntity {
 
 	@XmlAttribute (name = "name")
 	String name;
 	
-	@XmlAttribute (name = "column")
-	String column;
-	
+	@XmlAttribute (name = "table")
+	String table;
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public String getColumn() {
-		return column;
+	public String getTable() {
+		return table;
 	}
 
-	public void setColumn(String column) {
-		this.column = column;
+	public void setTable(String table) {
+		this.table = table;
 	}
 	
 }

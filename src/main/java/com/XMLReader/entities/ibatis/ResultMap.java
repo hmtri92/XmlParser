@@ -9,9 +9,11 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.XMLReader.entities.XMLEntity;
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement( name = "result-map" )
-public class ResultMap {
+public class ResultMap implements XMLEntity {
 
 	@XmlElement( name = "property")
 	List<Property> properties;

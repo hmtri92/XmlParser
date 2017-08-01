@@ -3,8 +3,10 @@ package com.XMLReader.entities.ibatis;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.XMLReader.entities.XMLEntity;
+
 @XmlRootElement( name = "dynamic-mapped-statement")
-public class DynamicMappedStatement {
+public class DynamicMappedStatement implements XMLEntity {
 
 	String name;
 	String resultmap;
