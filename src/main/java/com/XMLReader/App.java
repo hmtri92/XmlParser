@@ -1,7 +1,6 @@
 package com.XMLReader;
 
 import com.XMLReader.controller.HibernateController;
-import com.XMLReader.controller.IbatisController;
 
 /**
  * Hello world!

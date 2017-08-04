@@ -22,11 +22,9 @@ import com.XMLReader.entities.XMLEntity;
 public class HibernateEntity implements XMLEntity {
 
 	@XmlElement (name = "class")
-	@XmlMixed
 	List<EntityClass> lstEntityClass;
 		
 	@XmlElementRef (name = "sql-query")
-	@XmlMixed
 	List<SqlQuery> lstSqlQuery;
 
 	public List<EntityClass> getLstEntityClass() {

@@ -25,7 +25,7 @@ public class SqlQuery implements XMLEntity {
 	
 	@XmlMixed
 	@XmlAnyElement(lax = true)
-	List<String> values;
+	List<String> content;
 	
 	public String getName() {
 		return name;
@@ -51,12 +51,12 @@ public class SqlQuery implements XMLEntity {
 		lstReturnScaler.add(returnScalar);
 	}
 
-	public List<String> getValues() {
-		return values;
+	public List<String> getContent() {
+		return content;
 	}
 
-	public void setValues(List<String> values) {
-		this.values = values;
+	public void setContent(List<String> content) {
+		this.content = content;
 	}
 
 }
