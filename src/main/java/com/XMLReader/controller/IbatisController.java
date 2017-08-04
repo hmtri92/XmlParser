@@ -1,12 +1,14 @@
 package com.XMLReader.controller;
 
 import java.io.File;
+import java.io.OutputStream;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLStreamReader;
 
+import com.XMLReader.entities.XMLEntity;
 import com.XMLReader.entities.ibatis.IbatisEntity;
 
 public class IbatisController extends BaseController {
@@ -16,19 +18,26 @@ public class IbatisController extends BaseController {
 	}
 	
 	@Override
-	IbatisEntity unMarshal(File file) throws JAXBException {
+	XMLEntity unMarshal(File file) throws JAXBException {
 		try {
 	        XMLStreamReader xsr = getXMLStreamReader(file);
 			
 	        JAXBContext jaxbContext = JAXBContext.newInstance(IbatisEntity.class);
 			Unmarshaller unmars = jaxbContext.createUnmarshaller();
-			IbatisEntity ibatisEntity = (IbatisEntity) unmars.unmarshal(xsr);
+			IbatisEntity entity = (IbatisEntity) unmars.unmarshal(xsr);
+			entity.setFilePath(file.getAbsolutePath());
 			
-			return ibatisEntity;
+			return entity;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+
+	@Override
+	protected void marshal(XMLEntity entity, OutputStream output) throws JAXBException {
+		super.marshal(entity, output);
 	}
 	
 	public void test() {

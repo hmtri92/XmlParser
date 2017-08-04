@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
-import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.XMLReader.entities.XMLEntity;
@@ -20,6 +19,8 @@ import com.XMLReader.entities.XMLEntity;
 @XmlAccessorType (XmlAccessType.FIELD)
 @XmlRootElement (name = "hibernate-mapping")
 public class HibernateEntity implements XMLEntity {
+	
+	String filePath = "";
 
 	@XmlElement (name = "class")
 	List<EntityClass> lstEntityClass;
@@ -57,5 +58,13 @@ public class HibernateEntity implements XMLEntity {
 		}
 		
 		lstSqlQuery.add(sqlQuery);
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 }

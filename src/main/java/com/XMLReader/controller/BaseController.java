@@ -1,10 +1,14 @@
 package com.XMLReader.controller;
 
 import java.io.File;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -22,6 +26,7 @@ public abstract class BaseController {
 	private Reader reader;
 	private List<File> files;
 	private List<XMLEntity> lstEntity;
+	protected JAXBContext jaxbContext;
 	
 	public BaseController(String workingDir) {
 		this.workingDir = workingDir;
@@ -53,7 +58,7 @@ public abstract class BaseController {
 		}
 	}
 	
-	XMLStreamReader getXMLStreamReader(File file) throws XMLStreamException {
+	protected XMLStreamReader getXMLStreamReader(File file) throws XMLStreamException {
 		XMLInputFactory xif = XMLInputFactory.newFactory();
         DocXMLResolver resolver = new DocXMLResolver();
         xif.setXMLResolver(resolver);
@@ -64,6 +69,12 @@ public abstract class BaseController {
 	
 	
 	abstract XMLEntity unMarshal(File file) throws JAXBException;
+	
+	protected void marshal(XMLEntity entity, OutputStream output) throws JAXBException {
+		Marshaller marshaller = jaxbContext.createMarshaller();
+		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.marshal(entity, new OutputStreamWriter(output));
+	}
 
 	public String getWorkingDir() {
 		return workingDir;

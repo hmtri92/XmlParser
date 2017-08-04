@@ -1,5 +1,7 @@
 package com.XMLReader;
 
+import javax.xml.bind.JAXBException;
+
 import com.XMLReader.controller.HibernateController;
 
 /**
@@ -16,8 +18,14 @@ public class App
 //        ibatis.unMarshalAll();
 //        ibatis.test();
         
-        HibernateController hibernate = new HibernateController(dir);
-        hibernate.unMarshalAll();
-        hibernate.test();
+        HibernateController hibernate;
+		try {
+			hibernate = new HibernateController(dir);
+			hibernate.unMarshalAll();
+			hibernate.test();
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }

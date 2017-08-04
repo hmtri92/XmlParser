@@ -14,6 +14,7 @@ import com.XMLReader.entities.XMLEntity;
 @XmlAccessorType( XmlAccessType.FIELD )
 @XmlRootElement( name = "sql-map")
 public class IbatisEntity implements XMLEntity {
+	String filePath = "";
 	
 	@XmlAttribute
 	String name;
@@ -82,5 +83,13 @@ public class IbatisEntity implements XMLEntity {
 		}
 		
 		this.mappedStatements.add(mappedStatement);
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 }
