@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class entity-name="aaa" name="tls.ida.testHibernate.TlsLicAuthDTO" lazy="false">
+		<composite-id>
+			<key-property name="strClientID" column="clientid" />
+		</composite-id>
+
+		<property name="strCnt" column="cntBlk" />
+		<property name="strApplnName" column="cname" />
+		<property name="strNRIC" column="nricno" />
+		<property name="strCaseRefNo" column="caseref" />
+	</class>
+	
+	<class entity-name="bbb" name="tls.ida.testHibernate.TlsLicAuthDTO" lazy="false">
+		<composite-id>
+			<key-property name="strClientID" column="clientid2" />
+		</composite-id>
+
+		<property name="strCnt" column="cntBlk2" />
+		<property name="strApplnName" column="cname2" />
+		<property name="strNRIC" column="nricno2" />
+		<property name="strCaseRefNo" column="caseref2" />
+	</class>
+
+	<sql-query name="getBlkList">
+		<return entity-name="aaa"/>
+		SELECT count(*) AS cntBlk,
+			ai.CLIENT_ID AS clientid,
+			mb.NAME AS cname,
+			mb.NRIC_PASSPORT_NO AS nricno,
+			mb.CASE_REF AS caseref
+		FROM M_BLACKLIST mb, applicant_agent_info ai
+		WHERE
+			ai.client_id = :strClientID
+		GROUP BY ai.client_id, mb.name,
+			mb.nric_passport_no, mb.CASE_REf
+	</sql-query>
+
+</hibernate-mapping>

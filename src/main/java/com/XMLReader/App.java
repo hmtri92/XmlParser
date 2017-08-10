@@ -4,15 +4,11 @@ import javax.xml.bind.JAXBException;
 
 import com.XMLReader.controller.HibernateController;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
     {
-    	String dir = "D:/workspace_spring/XMLReader/runtest";
+    	String dir = "D:/workspaceSpring/XmlParser/runtest";
     	
 //    	IbatisController ibatis = new IbatisController(dir);
 //        ibatis.unMarshalAll();
