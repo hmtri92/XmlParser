@@ -12,7 +12,6 @@ import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.XMLReader.entities.XMLEntity;
-import com.sun.xml.txw2.annotation.XmlCDATA;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "sql-query")
@@ -59,7 +58,6 @@ public class SqlQuery implements XMLEntity {
 		return content;
 	}
 
-	@XmlCDATA
 	public void setContent(List<String> content) {
 		this.content = content;
 	}
