@@ -4,9 +4,8 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlMixed;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.XMLReader.entities.XMLEntity;
@@ -15,16 +14,24 @@ import com.XMLReader.entities.XMLEntity;
 @XmlRootElement (name = "class")
 public class EntityClass implements XMLEntity {
 
+	@XmlAttribute (name = "entity-name")
+	String entityName;
+	
 	@XmlAttribute (name = "name")
 	String name;
 	
 	@XmlAttribute (name = "table")
 	String table;
 	
-	@XmlMixed
-	@XmlAnyElement (lax = true)
-	List<String> content;
-
+	@XmlAttribute (name = "lazy")
+	String lazy = "false";
+	
+	@XmlElement (name = "property")
+	List<Property> lstProperty;
+	
+	@XmlElement (name = "composite-id")
+	CompositeID compositeID;
+	
 	public String getName() {
 		return name;
 	}
@@ -41,12 +48,36 @@ public class EntityClass implements XMLEntity {
 		this.table = table;
 	}
 
-	public List<String> getContent() {
-		return content;
+	public String getLazy() {
+		return lazy;
 	}
 
-	public void setContent(List<String> content) {
-		this.content = content;
+	public void setLazy(String lazy) {
+		this.lazy = lazy;
+	}
+
+	public List<Property> getLstProperty() {
+		return lstProperty;
+	}
+
+	public void setLstProperty(List<Property> lstProperty) {
+		this.lstProperty = lstProperty;
+	}
+
+	public CompositeID getCompositeID() {
+		return compositeID;
+	}
+
+	public void setCompositeID(CompositeID compositeID) {
+		this.compositeID = compositeID;
+	}
+
+	public String getEntityName() {
+		return entityName;
+	}
+
+	public void setEntityName(String entityName) {
+		this.entityName = entityName;
 	}
 
 }

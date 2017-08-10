@@ -10,8 +10,6 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLStreamReader;
 
-import org.apache.commons.lang.StringUtils;
-
 import com.XMLReader.entities.XMLEntity;
 import com.XMLReader.entities.hibernate.HibernateEntity;
 
@@ -41,31 +39,28 @@ public class HibernateController extends BaseController {
 
 	@Override
 	protected void marshal(XMLEntity entity, OutputStream output) throws JAXBException {
-//		try {
-//			output = new FileOutputStream(((HibernateEntity)entity).getFilePath());
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		}
-//		super.marshal(entity, output);
+		HibernateEntity hibernateEntity = (HibernateEntity) entity;
+		hibernateEntity.setFilePath(null);
+		
 		Marshaller marshaller = jaxbContext.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        marshaller.marshal(entity, new OutputStreamWriter(output));
+        marshaller.marshal(hibernateEntity, new OutputStreamWriter(output));
 	}
 	
 	public void test() {
 		getLstEntity().forEach(item -> {
 			if (item instanceof HibernateEntity) {
 				HibernateEntity entity = (HibernateEntity)item;
-				entity.getLstSqlQuery().get(0).getContent().forEach(value -> {
-					if (StringUtils.isNotBlank(value)) {
-						System.out.println(value);
-					}
-				});
-//				try {
-//					marshal(entity, System.out);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
+//				entity.getLstSqlQuery().get(0).getContent().forEach(value -> {
+//					if (StringUtils.isNotBlank(value)) {
+//						System.out.println(value);
+//					}
+//				});
+				try {
+					marshal(entity, System.out);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				
 			}
 		});

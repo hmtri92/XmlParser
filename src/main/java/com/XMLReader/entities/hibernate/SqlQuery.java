@@ -10,9 +10,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import com.XMLReader.entities.AdapterCDATA;
 import com.XMLReader.entities.XMLEntity;
 import com.sun.xml.txw2.annotation.XmlCDATA;
 
@@ -25,10 +23,12 @@ public class SqlQuery implements XMLEntity {
 
 	@XmlElement(name = "return-scalar")
 	List<ReturnScalar> lstReturnScaler;
+	
+	@XmlElement(name = "return")
+	List<Return> returnClass;
 
 	@XmlMixed
 	@XmlAnyElement(lax = true)
-	@XmlJavaTypeAdapter(AdapterCDATA.class)
 	List<String> content;
 
 	public String getName() {
@@ -62,6 +62,14 @@ public class SqlQuery implements XMLEntity {
 	@XmlCDATA
 	public void setContent(List<String> content) {
 		this.content = content;
+	}
+
+	public List<Return> getReturnClass() {
+		return returnClass;
+	}
+
+	public void setReturnClass(List<Return> returnClass) {
+		this.returnClass = returnClass;
 	}
 
 }
