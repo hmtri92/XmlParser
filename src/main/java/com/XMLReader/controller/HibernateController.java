@@ -45,27 +45,39 @@ public class HibernateController extends BaseController {
 
 	@Override
 	protected void marshal(XMLEntity entity, OutputStream output) throws JAXBException {
-		HibernateEntity hibernateEntity = (HibernateEntity) entity;
+		if (output != null) {
+			super.marshal(entity, output);
+			return;
+		}
 		
-		try {
-			File file = new File(hibernateEntity.getFilePath() + ".out");
-			FileWriter fileWriter = new FileWriter(file);
-			hibernateEntity.setFilePath(null);
+		// defaul write to file
+		if (output == null) {
+			HibernateEntity hibernateEntity = (HibernateEntity) entity;
 			
-			Marshaller marshaller = jaxbContext.createMarshaller();
-			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-			marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
-			marshaller.setProperty("com.sun.xml.bind.xmlDeclaration", Boolean.FALSE);
-			
-			StringWriter stringWriter = new StringWriter(); 
-			marshaller.marshal(hibernateEntity, stringWriter);
-			
-			fileWriter.write(encode + docType + stringWriter.toString());
-			fileWriter.flush();
-			fileWriter.close();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
+			try {
+				File file = new File(hibernateEntity.getFilePath() + ".out");
+				FileWriter fileWriter = new FileWriter(file);
+				
+				Marshaller marshaller = jaxbContext.createMarshaller();
+				marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+				marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
+				marshaller.setProperty("com.sun.xml.bind.xmlDeclaration", Boolean.FALSE);
+				
+				StringWriter stringWriter = new StringWriter(); 
+				marshaller.marshal(hibernateEntity, stringWriter);
+				
+				StringBuilder content = new StringBuilder();
+				content.append(hibernateEntity.getEncode());
+				content.append(hibernateEntity.getDocType());
+				content.append(stringWriter.toString());
+				
+				fileWriter.write(content.toString());
+				fileWriter.flush();
+				fileWriter.close();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}
@@ -76,8 +88,8 @@ public class HibernateController extends BaseController {
 				HibernateEntity entity = (HibernateEntity)item;
 				try {
 //					OutputStream output = new FileOutputStream(((HibernateEntity)entity).getFilePath()+".out");
-//					marshal(entity, output);
 					marshal(entity, null);
+					marshal(entity, System.out);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

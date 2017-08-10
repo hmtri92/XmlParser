@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import com.XMLReader.entities.XMLEntity;
 
@@ -20,6 +21,15 @@ import com.XMLReader.entities.XMLEntity;
 @XmlRootElement (name = "hibernate-mapping")
 public class HibernateEntity implements XMLEntity {
 	
+	@XmlTransient
+	private final String encode = "<?xml version='1.0' encoding='utf-8'?>";
+	
+	@XmlTransient
+	private final String docType = "\n<!DOCTYPE hibernate-mapping PUBLIC\n"
+			+ "\t\"-//Hibernate/Hibernate Mapping DTD 3.0//EN\"\n"
+			+ "\t\"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd\">\n";
+	
+	@XmlTransient
 	String filePath = "";
 
 	@XmlElement (name = "class")
@@ -66,5 +76,13 @@ public class HibernateEntity implements XMLEntity {
 
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
+	}
+
+	public String getEncode() {
+		return encode;
+	}
+
+	public String getDocType() {
+		return docType;
 	}
 }
