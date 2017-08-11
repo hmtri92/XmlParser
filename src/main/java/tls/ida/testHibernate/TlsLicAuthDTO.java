@@ -51,7 +51,7 @@ public class TlsLicAuthDTO implements Serializable {
 	protected String strRoExamTypeCd;
 	protected String strRoExamTypeDesc;
 	protected String strExamCondBy;
-	protected java.util.ArrayList lstROCandFee;
+//	protected java.util.ArrayList lstROCandFee;
 	protected String strTempFee;
 	protected String strApplnName;
 	protected String strAuthType;
@@ -433,13 +433,13 @@ public class TlsLicAuthDTO implements Serializable {
 		this.strExamCondBy = strExamCondBy;
 	}
 
-	public java.util.ArrayList getLstROCandFee() {
-		return lstROCandFee;
-	}
-
-	public void setLstROCandFee(java.util.ArrayList lstROCandFee) {
-		this.lstROCandFee = lstROCandFee;
-	}
+//	public java.util.ArrayList getLstROCandFee() {
+//		return lstROCandFee;
+//	}
+//
+//	public void setLstROCandFee(java.util.ArrayList lstROCandFee) {
+//		this.lstROCandFee = lstROCandFee;
+//	}
 
 	public String getStrTempFee() {
 		return strTempFee;

@@ -1,15 +1,7 @@
 package com.XMLReader;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import javax.xml.bind.JAXBException;
-
 import com.XMLReader.controller.HibernateController;
 import com.XMLReader.controller.IbatisController;
-import com.XMLReader.convert.ConvertIbatisToHibernate;
-import com.XMLReader.entities.hibernate.HibernateEntity;
-import com.XMLReader.entities.ibatis.IbatisEntity;
 
 public class App 
 {
