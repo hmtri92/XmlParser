@@ -13,8 +13,9 @@ import com.XMLReader.entities.ibatis.IbatisEntity;
 
 public class IbatisController extends BaseController {
 	
-	public IbatisController(String workingDir) {
+	public IbatisController(String workingDir) throws JAXBException {
 		super(workingDir);
+		jaxbContext = JAXBContext.newInstance(IbatisEntity.class);
 	}
 	
 	@Override
@@ -22,7 +23,6 @@ public class IbatisController extends BaseController {
 		try {
 	        XMLStreamReader xsr = getXMLStreamReader(file);
 			
-	        JAXBContext jaxbContext = JAXBContext.newInstance(IbatisEntity.class);
 			Unmarshaller unmars = jaxbContext.createUnmarshaller();
 			IbatisEntity entity = (IbatisEntity) unmars.unmarshal(xsr);
 			entity.setFilePath(file.getAbsolutePath());
@@ -44,8 +44,11 @@ public class IbatisController extends BaseController {
 		getLstEntity().forEach(item -> {
 			if (item instanceof IbatisEntity) {
 				IbatisEntity entity = (IbatisEntity)item;
-				System.out.println(entity.getName());
-				System.out.println(entity.getResultMaps().get(0).getProperties().get(0).getName());
+				try {
+					marshal(entity, System.out);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 	}

@@ -18,6 +18,9 @@ public class IbatisEntity implements XMLEntity {
 	@XmlTransient
 	String filePath = "";
 	
+	@XmlTransient
+	public static final String subfix = ".xml";
+	
 	@XmlAttribute
 	String name;
 	
@@ -93,5 +96,9 @@ public class IbatisEntity implements XMLEntity {
 
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
+	}
+
+	public String getSubfix() {
+		return subfix;
 	}
 }

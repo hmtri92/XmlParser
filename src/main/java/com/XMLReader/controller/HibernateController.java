@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.StringWriter;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -12,18 +13,25 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLStreamReader;
 
+import com.XMLReader.convert.ConvertIbatisToHibernate;
 import com.XMLReader.entities.XMLEntity;
 import com.XMLReader.entities.hibernate.HibernateEntity;
+import com.XMLReader.entities.ibatis.IbatisEntity;
 
 public class HibernateController extends BaseController {
-	private String encode = "<?xml version='1.0' encoding='utf-8'?>";
-	private String docType = "\n<!DOCTYPE hibernate-mapping PUBLIC\n"
-			+ "\t\"-//Hibernate/Hibernate Mapping DTD 3.0//EN\"\n"
-			+ "\t\"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd\">\n";
+	
+	public HibernateController() throws JAXBException {
+		jaxbContext = JAXBContext.newInstance(HibernateEntity.class);
+	}
 
 	public HibernateController(String workingDir) throws JAXBException {
 		super(workingDir);
 		jaxbContext = JAXBContext.newInstance(HibernateEntity.class);
+	}
+	
+	public HibernateController(IbatisController ibatisController) throws JAXBException {
+		jaxbContext = JAXBContext.newInstance(HibernateEntity.class);
+		convertIbatisToHibernate(ibatisController);
 	}
 
 	@Override
@@ -43,19 +51,17 @@ public class HibernateController extends BaseController {
 	}
 	
 
+	/**
+	 * OutputStream set null to write file
+	 */
 	@Override
 	protected void marshal(XMLEntity entity, OutputStream output) throws JAXBException {
-		if (output != null) {
-			super.marshal(entity, output);
-			return;
-		}
-		
 		// defaul write to file
 		if (output == null) {
 			HibernateEntity hibernateEntity = (HibernateEntity) entity;
 			
 			try {
-				File file = new File(hibernateEntity.getFilePath() + ".out");
+				File file = new File(hibernateEntity.getFilePath());
 				FileWriter fileWriter = new FileWriter(file);
 				
 				Marshaller marshaller = jaxbContext.createMarshaller();
@@ -78,6 +84,19 @@ public class HibernateController extends BaseController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		} else {
+			super.marshal(entity, output);
+		}
+		
+	}
+	
+	public void convertIbatisToHibernate(IbatisController ibatisController) {
+		ConvertIbatisToHibernate converter = new ConvertIbatisToHibernate();
+		
+		List<XMLEntity> lstIbatis = ibatisController.getLstEntity();
+		for (XMLEntity xmlEntity : lstIbatis) {
+			HibernateEntity entity = converter.convert((IbatisEntity) xmlEntity);
+			this.addEntity(entity);
 		}
 		
 	}
@@ -89,7 +108,7 @@ public class HibernateController extends BaseController {
 				try {
 //					OutputStream output = new FileOutputStream(((HibernateEntity)entity).getFilePath()+".out");
 					marshal(entity, null);
-					marshal(entity, System.out);
+//					marshal(entity, System.out);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

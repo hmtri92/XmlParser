@@ -1,5 +1,6 @@
 package com.XMLReader.entities.hibernate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,6 +9,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.XMLReader.entities.Property;
 import com.XMLReader.entities.XMLEntity;
 
 @XmlAccessorType (XmlAccessType.FIELD)
@@ -26,11 +28,11 @@ public class EntityClass implements XMLEntity {
 	@XmlAttribute (name = "lazy")
 	String lazy = "false";
 	
-	@XmlElement (name = "property")
-	List<Property> lstProperty;
-	
 	@XmlElement (name = "composite-id")
 	CompositeID compositeID;
+	
+	@XmlElement (name = "property")
+	List<Property> lstProperty;
 	
 	public String getName() {
 		return name;
@@ -62,6 +64,13 @@ public class EntityClass implements XMLEntity {
 
 	public void setLstProperty(List<Property> lstProperty) {
 		this.lstProperty = lstProperty;
+	}
+	
+	public void addProperty(Property property) {
+		if (this.lstProperty == null) {
+			this.lstProperty = new ArrayList<Property>();
+		}
+		this.lstProperty.add(property);
 	}
 
 	public CompositeID getCompositeID() {

@@ -28,6 +28,9 @@ public abstract class BaseController {
 	private List<XMLEntity> lstEntity;
 	protected JAXBContext jaxbContext;
 	
+	public BaseController() {
+	}
+
 	public BaseController(String workingDir) {
 		this.workingDir = workingDir;
 		init();
@@ -51,6 +54,18 @@ public abstract class BaseController {
 				try {
 					XMLEntity item = this.unMarshal(file);
 					getLstEntity().add(item);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+		}
+	}
+	
+	public void marshalAll() {
+		if (!lstEntity.isEmpty()) {
+			lstEntity.forEach(entity -> {
+				try {
+					this.marshal(entity, null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -90,6 +105,13 @@ public abstract class BaseController {
 
 	public void setLstEntity(List<XMLEntity> lstEntity) {
 		this.lstEntity = lstEntity;
+	}
+	
+	public void addEntity(XMLEntity entity) {
+		if (this.lstEntity == null) {
+			this.lstEntity = new ArrayList<XMLEntity>();
+		}
+		this.lstEntity.add(entity);
 	}
 
 }

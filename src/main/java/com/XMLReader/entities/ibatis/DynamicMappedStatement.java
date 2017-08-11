@@ -16,10 +16,10 @@ public class DynamicMappedStatement implements XMLEntity {
 	String name;
 	
 	@XmlAttribute( name = "result-map")
-	String resultmap;
+	String resultMap;
 	
 	@XmlValue
-	String value;
+	String content;
 
 	public String getName() {
 		return name;
@@ -29,19 +29,20 @@ public class DynamicMappedStatement implements XMLEntity {
 		this.name = name;
 	}
 
-	public String getResultmap() {
-		return resultmap;
+	public String getResultMap() {
+		return resultMap;
 	}
 
-	public void setResultmap(String resultmap) {
-		this.resultmap = resultmap;
+	public void setResultMap(String resultMap) {
+		this.resultMap = resultMap;
 	}
 
-	public String getValue() {
-		return value;
+	public String getContent() {
+		return content;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void setContent(String content) {
+		this.content = content;
 	}
+
 }

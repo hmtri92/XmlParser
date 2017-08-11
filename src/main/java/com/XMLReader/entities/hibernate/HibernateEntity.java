@@ -31,6 +31,9 @@ public class HibernateEntity implements XMLEntity {
 	
 	@XmlTransient
 	String filePath = "";
+	
+	@XmlTransient
+	public static final String subfix = ".hbm.xml";
 
 	@XmlElement (name = "class")
 	List<EntityClass> lstEntityClass;
@@ -84,5 +87,9 @@ public class HibernateEntity implements XMLEntity {
 
 	public String getDocType() {
 		return docType;
+	}
+
+	public String getSubfix() {
+		return subfix;
 	}
 }

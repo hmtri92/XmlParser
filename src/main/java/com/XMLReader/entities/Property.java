@@ -1,4 +1,4 @@
-package com.XMLReader.entities.ibatis;
+package com.XMLReader.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
