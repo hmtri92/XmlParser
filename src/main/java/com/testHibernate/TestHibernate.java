@@ -1,4 +1,4 @@
-package tls.ida.testHibernate;
+package com.testHibernate;
 
 //import java.util.List;
 
@@ -43,8 +43,8 @@ public class TestHibernate {
 //		try {
 //			Query query = getSession().getNamedQuery("getBlkList");
 //			query.setParameter("strClientID", "33712");
-//			List<TlsLicAuthDTO> lst = query.list();
-//			TlsLicAuthDTO lic = (TlsLicAuthDTO) lst.get(0);
+//			List<TestDTO> lst = query.list();
+//			TlsLicAuthDTO lic = (TestDTO) lst.get(0);
 //			
 //			lic.getStrCnt();
 //		} catch (Exception e) {

@@ -1,11 +1,8 @@
-package tls.ida.testHibernate;
+package com.testHibernate;
 
 import java.io.Serializable;
 
-public class TlsLicAuthDTO implements Serializable {
-	/**
-	 * 
-	 */
+public class TestDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	protected String strClientID;
@@ -51,7 +48,6 @@ public class TlsLicAuthDTO implements Serializable {
 	protected String strRoExamTypeCd;
 	protected String strRoExamTypeDesc;
 	protected String strExamCondBy;
-//	protected java.util.ArrayList lstROCandFee;
 	protected String strTempFee;
 	protected String strApplnName;
 	protected String strAuthType;
@@ -64,17 +60,13 @@ public class TlsLicAuthDTO implements Serializable {
 	protected String strInitFeeInd;
 	protected String strNetFeeInd;
 	protected String strSNMRemks;
-	// ----------CR-TLS-2005-038 ------------
 	protected String strSBOProrate;
 
 	protected String strcallsignFee;
 	protected String strGSTcallsignFee;
-	// Start Raymond: 30Apr15
 	protected String strCourierFeeCd;
 	protected String strCourierFee;
 	protected String strCourierFeeInd;
-
-	// End: Raymond: 30Apr15
 
 	public String getStrSBOProrate() {
 		return strSBOProrate;
@@ -86,7 +78,7 @@ public class TlsLicAuthDTO implements Serializable {
 
 	// ----------CR-TLS-2005-038 ------------
 
-	public TlsLicAuthDTO() {
+	public TestDTO() {
 	}
 
 	public String getStrClientID() {
@@ -432,14 +424,6 @@ public class TlsLicAuthDTO implements Serializable {
 	public void setStrExamCondBy(String strExamCondBy) {
 		this.strExamCondBy = strExamCondBy;
 	}
-
-//	public java.util.ArrayList getLstROCandFee() {
-//		return lstROCandFee;
-//	}
-//
-//	public void setLstROCandFee(java.util.ArrayList lstROCandFee) {
-//		this.lstROCandFee = lstROCandFee;
-//	}
 
 	public String getStrTempFee() {
 		return strTempFee;

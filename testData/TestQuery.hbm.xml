@@ -5,7 +5,7 @@
 
 <hibernate-mapping>
 
-	<class entity-name="aaa" name="tls.ida.testHibernate.TlsLicAuthDTO" lazy="false">
+	<class entity-name="aaa" name="com.testHibernate.TestDTO" lazy="false">
 		<composite-id>
 			<key-property name="strClientID" column="clientid" />
 		</composite-id>
@@ -16,7 +16,7 @@
 		<property name="strCaseRefNo" column="caseref" />
 	</class>
 	
-	<class entity-name="bbb" name="tls.ida.testHibernate.TlsLicAuthDTO" lazy="false">
+	<class entity-name="bbb" name="com.testHibernate.TestDTO" lazy="false">
 		<composite-id>
 			<key-property name="strClientID" column="clientid2" />
 		</composite-id>
