@@ -29,7 +29,7 @@ public class IbatisController extends BaseController {
 			
 			return entity;
 		} catch (Exception e) {
-			e.printStackTrace();
+			error(e.getMessage());
 		}
 		return null;
 	}
@@ -47,7 +47,7 @@ public class IbatisController extends BaseController {
 				try {
 					marshal(entity, System.out);
 				} catch (Exception e) {
-					e.printStackTrace();
+					error(e.getMessage());
 				}
 			}
 		});

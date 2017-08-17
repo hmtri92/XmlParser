@@ -18,9 +18,10 @@ import org.apache.commons.lang.StringUtils;
 
 import com.XMLReader.entities.XMLEntity;
 import com.XMLReader.io.DocXMLResolver;
+import com.XMLReader.io.LogUtil;
 import com.XMLReader.io.Reader;
 
-public abstract class BaseController {
+public abstract class BaseController extends LogUtil {
 
 	private String workingDir = "";
 	private Reader reader;
@@ -45,6 +46,8 @@ public abstract class BaseController {
 	private void readFiles() {
 		if (!StringUtils.isEmpty(workingDir)) {
 			files = reader.getXMLFiles(workingDir);
+		} else {
+			error("No workingDir");
 		}
 	}
 	
@@ -55,7 +58,7 @@ public abstract class BaseController {
 					XMLEntity item = this.unMarshal(file);
 					getLstEntity().add(item);
 				} catch (Exception e) {
-					e.printStackTrace();
+					error("unMarshalAll()" + e.getMessage());
 				}
 			});
 		}
@@ -67,7 +70,7 @@ public abstract class BaseController {
 				try {
 					this.marshal(entity, null);
 				} catch (Exception e) {
-					e.printStackTrace();
+					error("marshalAll()" + e.getMessage());
 				}
 			});
 		}

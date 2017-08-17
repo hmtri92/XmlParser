@@ -45,7 +45,7 @@ public class HibernateController extends BaseController {
 			
 			return entity;
 		} catch (Exception e) {
-			e.printStackTrace();
+			error(e.getMessage());
 		}
 		return null;
 	}
@@ -82,7 +82,7 @@ public class HibernateController extends BaseController {
 				fileWriter.close();
 				
 			} catch (IOException e) {
-				e.printStackTrace();
+				error(e.getMessage());
 			}
 		} else {
 			super.marshal(entity, output);
@@ -110,7 +110,7 @@ public class HibernateController extends BaseController {
 					marshal(entity, null);
 //					marshal(entity, System.out);
 				} catch (Exception e) {
-					e.printStackTrace();
+					error(e.getStackTrace().toString());
 				}
 				
 			}
