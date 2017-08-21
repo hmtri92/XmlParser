@@ -2,6 +2,7 @@ package com.XMLReader;
 
 import org.apache.log4j.Logger;
 
+import com.XMLReader.controller.ControllerFactory;
 import com.XMLReader.controller.HibernateController;
 import com.XMLReader.controller.IbatisController;
 
@@ -13,7 +14,8 @@ public class App
     	
         
 		try {
-			IbatisController ibatis = new IbatisController(dir);
+			ControllerFactory factory = new ControllerFactory();
+			IbatisController ibatis = (IbatisController) factory.getController(ControllerFactory.IBATIS, dir);
 			ibatis.unMarshalAll();
 			ibatis.test();
 			
