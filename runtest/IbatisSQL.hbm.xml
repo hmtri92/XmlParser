@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class entity-name="blkListCnt_result" name="com.testHibernate.TestDTO" lazy="false">
+        <composite-id>
+            <key-property name="strCnt" column="cntBlk"/>
+        </composite-id>
+        <property name="strClientID" column="clientid"/>
+        <property name="strApplnName" column="cname"/>
+        <property name="strNRIC" column="nricno"/>
+        <property name="strCaseRefNo" column="caseref"/>
+    </class>
+    <class entity-name="licradioauthdtl_result" name="com.testHibernate.TestDTO" lazy="false">
+        <composite-id>
+            <key-property name="strTransID" column="transid"/>
+        </composite-id>
+        <property name="strClientID" column="clientid"/>
+        <property name="strInitFeeInd" column="initind"/>
+        <property name="strNetFeeInd" column="netind"/>
+        <property name="strApplNo" column="applno"/>
+        <property name="strStatusCd" column="statuscd"/>
+        <property name="strStatusDesc" column="statusdesc"/>
+        <property name="strDuration" column="duration"/>
+        <property name="strFeeCd" column="feecd"/>
+        <property name="strFeeDesc" column="feedesc"/>
+        <property name="strOnlineID" column="onlineid"/>
+        <property name="lstRemarks" column="remarks"/>
+        <property name="strSNMRemks" column="snmremks"/>
+        <property name="strInitialFee" column="initfee"/>
+        <property name="strNetwrkFee" column="netwrkfee"/>
+        <property name="strStationFee" column="statfee"/>
+        <property name="strcallsignFee" column="callsignfee"/>
+        <property name="strFreqFee" column="freqfee"/>
+        <property name="strGSTInd" column="gstind"/>
+        <property name="strApplnName" column="applname"/>
+        <property name="strSBOProrate" column="prorate"/>
+        <property name="strCourierFee" column="courierFee"/>
+        <property name="strCourierFeeCd" column="courierFeeCd"/>
+        <property name="strCourierFeeInd" column="courierFeeInd"/>
+    </class>
+    <sql-query name="getBlkList">
+        <return entity-name="blkListCnt_result"/>
+select count(*) cntBlk,
+      ai.CLIENT_ID clientid, 
+      mb.NAME cname,
+      mb.NRIC_PASSPORT_NO nricno,
+      mb.CASE_REF caseref
+      from M_BLACKLIST mb, applicant_agent_info ai
+       where mb.NRIC_PASSPORT_NO IN (select ai.APPLT_AGENT_NRIC_PASSPORT_NO 
+	  from applicant_agent_info ai 
+	  where ai.CLIENT_ID= :strClientID)
+  	  and ai.client_id=:strClientID
+	 group by ai.client_id,mb.name, mb.nric_passport_no, mb.CASE_REf</sql-query>
+    <sql-query name="getROCandFee">
+        <return entity-name="licCandFee_result"/>
+SELECT rc.EXAM_FEE_CD feecd, count(rc.EXAM_FEE_CD) qnty,
+     get_fee(rc.EXAM_FEE_CD, :strLicGroup:varchar,1,NULL) feeamt
+	  FROM RO_EXAM_INFO ri, RO_EXAM_CAND_DTLS rc 
+	  WHERE 
+	     ri.exam_no=:strTransID:NUMBER
+	     and rc.EXAM_NO = ri.exam_no 
+		 GROUP BY rc.exam_fee_cd</sql-query>
+</hibernate-mapping>

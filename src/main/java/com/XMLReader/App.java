@@ -1,5 +1,7 @@
 package com.XMLReader;
 
+import org.apache.log4j.Logger;
+
 import com.XMLReader.controller.HibernateController;
 import com.XMLReader.controller.IbatisController;
 
@@ -19,7 +21,8 @@ public class App
 			hibernate.marshalAll();
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger logger = Logger.getLogger(App.class);
+			logger.error("main error", e);
 		}
     }
 }

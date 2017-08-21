@@ -7,6 +7,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.XMLReader.entities.XMLEntity;
 
+/**
+ * 
+ * @author thuynh40
+ * Element Use both Ibatis and Hibernate
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement( name = "property" )
 public class Property implements XMLEntity {

@@ -13,6 +13,10 @@ import com.XMLReader.entities.ibatis.IbatisEntity;
 
 public class IbatisController extends BaseController {
 	
+	public IbatisController() throws JAXBException {
+		jaxbContext = JAXBContext.newInstance(IbatisEntity.class);
+	}
+	
 	public IbatisController(String workingDir) throws JAXBException {
 		super(workingDir);
 		jaxbContext = JAXBContext.newInstance(IbatisEntity.class);
@@ -29,12 +33,11 @@ public class IbatisController extends BaseController {
 			
 			return entity;
 		} catch (Exception e) {
-			error(e.getMessage());
+			error(e);
 		}
 		return null;
 	}
 	
-
 	@Override
 	protected void marshal(XMLEntity entity, OutputStream output) throws JAXBException {
 		super.marshal(entity, output);

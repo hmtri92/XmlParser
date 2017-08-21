@@ -17,6 +17,10 @@ public class LogUtil {
 		getLogger().error(message);
 	}
 	
+	public void error(Exception e) {
+		getLogger().error("ERROR", e);		
+	}
+	
 	public void info(String message) {
 		getLogger().info(message);
 	}

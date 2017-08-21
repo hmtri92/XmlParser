@@ -24,7 +24,7 @@ public class SqlQuery implements XMLEntity {
 	List<ReturnScalar> lstReturnScaler;
 	
 	@XmlElement(name = "return")
-	Return returnClass;
+	ReturnEntity returnEntity;
 
 	@XmlMixed
 	@XmlAnyElement(lax = true)
@@ -62,7 +62,7 @@ public class SqlQuery implements XMLEntity {
 		this.content = content;
 	}
 	
-	public void addConternt(String content) {
+	public void addContent(String content) {
 		if (this.content == null) {
 			this.content = new ArrayList<String>();
 		}
@@ -70,12 +70,12 @@ public class SqlQuery implements XMLEntity {
 		this.content.add(content);
 	}
 
-	public Return getReturnClass() {
-		return returnClass;
+	public ReturnEntity getReturnEntity() {
+		return returnEntity;
 	}
 
-	public void setReturnClass(Return returnClass) {
-		this.returnClass = returnClass;
+	public void setReturnEntity(ReturnEntity returnEntity) {
+		this.returnEntity = returnEntity;
 	}
 
 }

@@ -6,11 +6,12 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.XMLReader.Utilities;
 import com.XMLReader.entities.Property;
 import com.XMLReader.entities.hibernate.CompositeID;
 import com.XMLReader.entities.hibernate.EntityClass;
 import com.XMLReader.entities.hibernate.HibernateEntity;
-import com.XMLReader.entities.hibernate.Return;
+import com.XMLReader.entities.hibernate.ReturnEntity;
 import com.XMLReader.entities.hibernate.SqlQuery;
 import com.XMLReader.entities.ibatis.DynamicMappedStatement;
 import com.XMLReader.entities.ibatis.IbatisEntity;
@@ -72,14 +73,17 @@ public class ConvertIbatisToHibernate {
 		return lstEntityClass;
 	}
 	
-	// Content empty when query has <dynamic> tag
-	// Can not convert to name query ==> proccess in java code
+	/**
+	 *  Content empty when query has <dynamic> tag
+	 * 	Can not convert to name query ==> proccess in java code
+	 */
 	private List<SqlQuery> convertDynamicMappedStatement(List<DynamicMappedStatement> dynamicMappedStatements) {
 		List<SqlQuery> lstSqlQuery = new ArrayList<SqlQuery>();
 		
 		for (DynamicMappedStatement dynamicMappedStatement : dynamicMappedStatements) {
-			String content = dynamicMappedStatement.getContent();
+			String content = Utilities.trim(dynamicMappedStatement.getContent());
 			if (content.isEmpty()) {
+				// Cannot convert Dynamic query, enhance in java code.
 				continue;
 			}
 			
@@ -88,12 +92,12 @@ public class ConvertIbatisToHibernate {
 			sqlQuery.setName(dynamicMappedStatement.getName());
 			
 			if (dynamicMappedStatement.getResultMap() != null) {
-				Return returnClass = new Return();
+				ReturnEntity returnClass = new ReturnEntity();
 				returnClass.setEntityName(dynamicMappedStatement.getResultMap());
-				sqlQuery.setReturnClass(returnClass);
+				sqlQuery.setReturnEntity(returnClass);
 			}
 			
-			sqlQuery.addConternt(convertQuery(content));
+			sqlQuery.addContent(convertQuery(content));
 			
 			lstSqlQuery.add(sqlQuery);
 		}
@@ -110,13 +114,13 @@ public class ConvertIbatisToHibernate {
 			sqlQuery.setName(mappedStatement.getName());
 			
 			if (mappedStatement.getResultMap() != null) {
-				Return returnClass = new Return();
+				ReturnEntity returnClass = new ReturnEntity();
 				returnClass.setEntityName(mappedStatement.getResultMap());
-				sqlQuery.setReturnClass(returnClass);
+				sqlQuery.setReturnEntity(returnClass);
 			}
 			
-			String content = mappedStatement.getContent();
-			sqlQuery.addConternt(convertQuery(content));
+			String content = Utilities.trim (mappedStatement.getContent());
+			sqlQuery.addContent(convertQuery(content));
 			
 			lstSqlQuery.add(sqlQuery);
 		}
@@ -136,6 +140,6 @@ public class ConvertIbatisToHibernate {
 		}
 		m.appendTail(sb);
 		
-		return sb.toString();
+		return "\n" + sb.toString();
 	}
 }

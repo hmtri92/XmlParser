@@ -9,7 +9,7 @@ import com.XMLReader.entities.XMLEntity;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "return")
-public class Return implements XMLEntity {
+public class ReturnEntity implements XMLEntity {
 	
 	@XmlAttribute (name = "entity-name")
 	String entityName;

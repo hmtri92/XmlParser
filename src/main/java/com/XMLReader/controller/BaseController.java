@@ -76,10 +76,12 @@ public abstract class BaseController extends LogUtil {
 		}
 	}
 	
+	// Fix error file contain DOCTYPE
 	protected XMLStreamReader getXMLStreamReader(File file) throws XMLStreamException {
 		XMLInputFactory xif = XMLInputFactory.newFactory();
         DocXMLResolver resolver = new DocXMLResolver();
         xif.setXMLResolver(resolver);
+        xif.setProperty(XMLInputFactory.SUPPORT_DTD, false);
         XMLStreamReader xsr = xif.createXMLStreamReader(new StreamSource(file));
         
         return xsr;
