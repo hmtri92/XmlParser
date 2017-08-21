@@ -15,6 +15,8 @@ public class Report {
 	
 	List<ConvertReportPOJO> lstSuccess = new ArrayList<ConvertReportPOJO>();
 	List<ConvertReportPOJO> lstCannotConvert = new ArrayList<ConvertReportPOJO>();
+	List<String> lstErrorUnmarshal = new ArrayList<String>();
+	List<String> lstErrorMarshal = new ArrayList<String>();
 	
 	public String print() {
 		StringBuilder reportResult = new StringBuilder();
@@ -25,9 +27,21 @@ public class Report {
 		reportResult.append("Total success Query: ").append(totalSuccessQuery).append("\n");
 		reportResult.append("Total fail Query: ").append(totalFailQuery).append("\n");
 		reportResult.append("Total Result-Map: ").append(totalResultMap).append("\n");
+		
+		reportResult.append("----------------------------------").append("\n");
+		reportResult.append("Unmarshal error: ").append("\n");
+		for (String item : lstErrorUnmarshal) {
+			reportResult.append("\t").append(item).append("\n");
+		}
+		
+		reportResult.append("----------------------------------").append("\n");
+		reportResult.append("Marshal error: ").append("\n");
+		for (String item : lstErrorMarshal) {
+			reportResult.append("\t").append(item).append("\n");
+		}
+		
 		reportResult.append("----------------------------------").append("\n");
 		reportResult.append("List Static query Cannot convert: ").append("\n");
-		
 		for (ConvertReportPOJO convertReportPOJO : lstCannotConvert) {
 			reportResult.append("Path: ").append(convertReportPOJO.getPath()).append("\n");
 			int count = 1;
@@ -106,5 +120,21 @@ public class Report {
 	
 	public void plusTotalFile() {
 		this.totalFile++;
+	}
+
+	public List<String> getLstErrorUnmarshal() {
+		return lstErrorUnmarshal;
+	}
+	
+	public void addLstErrorUnmarshal(String path) {
+		lstErrorUnmarshal.add(path);
+	}
+
+	public List<String> getLstErrorMarshal() {
+		return lstErrorMarshal;
+	}
+	
+	public void addLstErrorMarshal(String path) {
+		lstErrorMarshal.add(path);
 	}
 }

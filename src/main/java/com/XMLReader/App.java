@@ -10,7 +10,8 @@ public class App
 {
     public static void main( String[] args )
     {
-    	String dir = "D:/workspace_spring/XMLReader/runtest";
+    	String dir = "D:/workspaceSpring/XmlParser/runtest";
+//    	String dir = "D:/workspace_spring/XMLReader/runtest";
     	
         
 		try {
@@ -23,7 +24,7 @@ public class App
 			hibernate.marshalAll();
 			
 			Logger logger = Logger.getLogger(App.class);
-			logger.info(hibernate.getReport().print());
+			logger.info(Utilities.report.print());
 			
 		} catch (Exception e) {
 			Logger logger = Logger.getLogger(App.class);

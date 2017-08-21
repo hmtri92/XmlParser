@@ -6,16 +6,21 @@ import java.util.List;
 
 public class Reader {
 	
+	List<File> lstFileName = new ArrayList<File>();
 	public List<File> getXMLFiles(String folderPath) {
 		File file = new File(folderPath);
-		File[] files = file.listFiles(
-				(dir, name) -> {
-					return name.toLowerCase().endsWith(".xml");
-				});
+		File[] files = file.listFiles();
 		
-		List<File> lstFileName = new ArrayList<File>();
 		for (File item : files) {
-			lstFileName.add(item);
+			if (item.isDirectory()) {
+				getXMLFiles(item.getAbsolutePath());
+			} else {
+				if (item.getName().endsWith(".hbm.xml")) {
+					continue;
+				} else if (item.getName().endsWith(".xml")) {
+					lstFileName.add(item);
+				}
+			}
 		}
 		
 		return lstFileName;

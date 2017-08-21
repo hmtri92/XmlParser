@@ -13,15 +13,13 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLStreamReader;
 
+import com.XMLReader.Utilities;
 import com.XMLReader.convert.ConvertIbatisToHibernate;
 import com.XMLReader.entities.XMLEntity;
 import com.XMLReader.entities.hibernate.HibernateEntity;
 import com.XMLReader.entities.ibatis.IbatisEntity;
-import com.XMLReader.io.Report;
 
 public class HibernateController extends BaseController {
-	
-	Report report;
 	
 	public HibernateController() throws JAXBException {
 		jaxbContext = JAXBContext.newInstance(HibernateEntity.class);
@@ -65,6 +63,7 @@ public class HibernateController extends BaseController {
 			
 			try {
 				File file = new File(hibernateEntity.getFilePath());
+//				boolean result = Files.deleteIfExists(file.toPath());
 				FileWriter fileWriter = new FileWriter(file);
 				
 				Marshaller marshaller = jaxbContext.createMarshaller();
@@ -86,6 +85,7 @@ public class HibernateController extends BaseController {
 				
 			} catch (IOException e) {
 				error(e.getMessage());
+				Utilities.report.addLstErrorMarshal(hibernateEntity.getFilePath());
 			}
 		} else {
 			super.marshal(entity, output);
@@ -102,14 +102,8 @@ public class HibernateController extends BaseController {
 			this.addEntity(entity);
 		}
 		
-		report = converter.getReport();
-		
 	}
 	
-	public Report getReport() {
-		return report;
-	}
-
 	public void test() {
 		getLstEntity().forEach(item -> {
 			if (item instanceof HibernateEntity) {

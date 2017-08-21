@@ -8,6 +8,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLStreamReader;
 
+import com.XMLReader.Utilities;
 import com.XMLReader.entities.XMLEntity;
 import com.XMLReader.entities.ibatis.IbatisEntity;
 
@@ -34,6 +35,7 @@ public class IbatisController extends BaseController {
 			return entity;
 		} catch (Exception e) {
 			error(e);
+			Utilities.report.addLstErrorUnmarshal(file.getAbsolutePath());
 		}
 		return null;
 	}

@@ -70,7 +70,7 @@ public abstract class BaseController extends LogUtil {
 				try {
 					this.marshal(entity, null);
 				} catch (Exception e) {
-					error("marshalAll()" + e.getMessage());
+					error(e);
 				}
 			});
 		}
