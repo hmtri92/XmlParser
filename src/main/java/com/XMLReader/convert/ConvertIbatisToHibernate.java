@@ -17,10 +17,24 @@ import com.XMLReader.entities.ibatis.DynamicMappedStatement;
 import com.XMLReader.entities.ibatis.IbatisEntity;
 import com.XMLReader.entities.ibatis.MappedStatement;
 import com.XMLReader.entities.ibatis.ResultMap;
+import com.XMLReader.entities.report.ConvertReportPOJO;
+import com.XMLReader.io.Report;
 
 public class ConvertIbatisToHibernate {
-
+	
+	Report report = new Report();
+	private String filePath = "";
+	ConvertReportPOJO successEnty;
+	ConvertReportPOJO failEnty;
+	
 	public HibernateEntity convert (IbatisEntity ibatisEntity) {
+		successEnty = new ConvertReportPOJO();
+		failEnty = new ConvertReportPOJO();
+		
+		filePath = ibatisEntity.getFilePath();
+		successEnty.setPath(filePath);
+		failEnty.setPath(filePath);
+		
 		HibernateEntity hibernateEntity = new HibernateEntity();
 		
 		hibernateEntity.setFilePath(convertFilePath(ibatisEntity.getFilePath()));
@@ -35,6 +49,10 @@ public class ConvertIbatisToHibernate {
 		lstSqlQuery.addAll(lstDynamicMappedStatements);
 		hibernateEntity.setLstSqlQuery(lstSqlQuery);
 		
+		report.plusTotalFile();
+		report.addLstCannotConvert(failEnty);
+		report.addLstSuccess(successEnty);
+		
 		return hibernateEntity;
 	}
 	
@@ -46,6 +64,7 @@ public class ConvertIbatisToHibernate {
 		List<EntityClass> lstEntityClass = new ArrayList<EntityClass>();
 		
 		for (ResultMap resultMap : resultMaps) {
+			report.plusResultMap();
 			EntityClass entityClass = new EntityClass();
 			
 			String entityName = resultMap.getName();
@@ -84,6 +103,8 @@ public class ConvertIbatisToHibernate {
 			String content = Utilities.trim(dynamicMappedStatement.getContent());
 			if (content.isEmpty()) {
 				// Cannot convert Dynamic query, enhance in java code.
+				failEnty.addQueryNames(dynamicMappedStatement.getName());
+				report.plusFail();
 				continue;
 			}
 			
@@ -100,6 +121,9 @@ public class ConvertIbatisToHibernate {
 			sqlQuery.addContent(convertQuery(content));
 			
 			lstSqlQuery.add(sqlQuery);
+			
+			successEnty.addQueryNames(dynamicMappedStatement.getName());
+			report.plusSuccess();
 		}
 		
 		return lstSqlQuery;
@@ -123,6 +147,9 @@ public class ConvertIbatisToHibernate {
 			sqlQuery.addContent(convertQuery(content));
 			
 			lstSqlQuery.add(sqlQuery);
+			
+			successEnty.addQueryNames(mappedStatement.getName());
+			report.plusSuccess();
 		}
 		
 		return lstSqlQuery;
@@ -141,5 +168,9 @@ public class ConvertIbatisToHibernate {
 		m.appendTail(sb);
 		
 		return "\n" + sb.toString();
+	}
+
+	public Report getReport() {
+		return report;
 	}
 }

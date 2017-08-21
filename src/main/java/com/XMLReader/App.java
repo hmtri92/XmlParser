@@ -17,10 +17,13 @@ public class App
 			ControllerFactory factory = new ControllerFactory();
 			IbatisController ibatis = (IbatisController) factory.getController(ControllerFactory.IBATIS, dir);
 			ibatis.unMarshalAll();
-			ibatis.test();
+//			ibatis.test();
 			
 			HibernateController hibernate = new HibernateController(ibatis);
 			hibernate.marshalAll();
+			
+			Logger logger = Logger.getLogger(App.class);
+			logger.info(hibernate.getReport().print());
 			
 		} catch (Exception e) {
 			Logger logger = Logger.getLogger(App.class);

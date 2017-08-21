@@ -17,8 +17,11 @@ import com.XMLReader.convert.ConvertIbatisToHibernate;
 import com.XMLReader.entities.XMLEntity;
 import com.XMLReader.entities.hibernate.HibernateEntity;
 import com.XMLReader.entities.ibatis.IbatisEntity;
+import com.XMLReader.io.Report;
 
 public class HibernateController extends BaseController {
+	
+	Report report;
 	
 	public HibernateController() throws JAXBException {
 		jaxbContext = JAXBContext.newInstance(HibernateEntity.class);
@@ -99,8 +102,14 @@ public class HibernateController extends BaseController {
 			this.addEntity(entity);
 		}
 		
+		report = converter.getReport();
+		
 	}
 	
+	public Report getReport() {
+		return report;
+	}
+
 	public void test() {
 		getLstEntity().forEach(item -> {
 			if (item instanceof HibernateEntity) {
