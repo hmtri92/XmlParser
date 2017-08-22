@@ -10,8 +10,8 @@ public class App
 {
     public static void main( String[] args )
     {
-    	String dir = "D:/workspaceSpring/XmlParser/runtest";
-//    	String dir = "D:/workspace_spring/XMLReader/runtest";
+//    	String dir = "D:/workspaceSpring/XmlParser/runtest";
+    	String dir = "D:/workspace_spring/XMLReader/runtest";
     	
         
 		try {
