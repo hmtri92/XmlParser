@@ -24,4 +24,8 @@ public class LogUtil {
 	public void info(String message) {
 		getLogger().info(message);
 	}
+	
+	public void debug(String message) {
+		getLogger().debug(message);
+	}
 }

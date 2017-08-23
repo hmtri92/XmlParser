@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping ("/")
 public class HelloController {
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String printWelcome(ModelMap model) {
+	
+	@RequestMapping(method = RequestMethod.GET)
+    public String sayHello(ModelMap model) {
+        model.addAttribute("msg", "Hello World from Spring 4 MVC");
+        return "hello";
+    }
 
-		model.addAttribute("message", "Spring 3 MVC Hello World");
-		return "hello";
-
-	}
-
-	@RequestMapping(value = "/hello/{name:.+}", method = RequestMethod.GET)
+	@RequestMapping(path= "/hello/{name}", method = RequestMethod.GET)
 	public ModelAndView hello(@PathVariable("name") String name) {
 
 		ModelAndView model = new ModelAndView();
