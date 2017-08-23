@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping ("/")
 public class HelloController {
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping( path= "/hello", method = RequestMethod.GET)
     public String sayHello(ModelMap model) {
         model.addAttribute("msg", "Hello World from Spring 4 MVC");
         return "hello";
