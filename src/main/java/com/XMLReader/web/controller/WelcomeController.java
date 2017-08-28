@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.XMLReader.entities.report.ConvertReportPOJO;
+import com.XMLReader.io.LogUtil;
+import com.XMLReader.web.bean.ConvertRequest;
 
 @Controller
 @RequestMapping ("/")
-public class WelcomeController {
+public class WelcomeController extends LogUtil {
 	
 	@RequestMapping(method = RequestMethod.GET)
     public String welcome(ModelMap model) {
@@ -24,9 +26,12 @@ public class WelcomeController {
 	}
 	
 	@NotifyClients
-	@RequestMapping(value = "/ideas", method = RequestMethod.POST)
-	public @ResponseBody ConvertReportPOJO convert(@RequestBody String path) {
+	@RequestMapping(value = "/convert", method = RequestMethod.POST)
+	public @ResponseBody ConvertReportPOJO convert(@RequestBody ConvertRequest request) {
 		ConvertReportPOJO out = new ConvertReportPOJO();
+		
+		info("In WelcomeController");
+		
 	    return out;
 	}
 

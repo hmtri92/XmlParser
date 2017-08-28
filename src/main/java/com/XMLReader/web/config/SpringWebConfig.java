@@ -19,16 +19,11 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations(
-				"/resources/");
-		registry.addResourceHandler("/js/**").addResourceLocations(
-				"/resources/js/");
-		registry.addResourceHandler("/css/**").addResourceLocations(
-				"/resources/css/");
-		registry.addResourceHandler("/images/**").addResourceLocations(
-				"/resources/images/");
-		registry.addResourceHandler("/fonts/**").addResourceLocations(
-				"/resources/fonts/");
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+		registry.addResourceHandler("/js/**").addResourceLocations("/resources/js/");
+		registry.addResourceHandler("/css/**").addResourceLocations("/resources/css/");
+		registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");
+		registry.addResourceHandler("/fonts/**").addResourceLocations("/resources/fonts/");
 	}
 
 	@Bean
@@ -42,8 +37,7 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
 	}
 
 	@Override
-	public void configureDefaultServletHandling(
-			DefaultServletHandlerConfigurer configurer) {
+	public void configureDefaultServletHandling (DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
 
@@ -54,12 +48,12 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
 	 * can be done by adding the following configuration:
 	 * @return
 	 */
+	@SuppressWarnings("deprecation")
 	@Bean
 	public WebContentInterceptor webContentInterceptor() {
 		WebContentInterceptor interceptor = new WebContentInterceptor();
 		interceptor.setCacheSeconds(0);
 		interceptor.setUseExpiresHeader(true);
-		;
 		interceptor.setUseCacheControlHeader(true);
 		interceptor.setUseCacheControlNoStore(true);
 

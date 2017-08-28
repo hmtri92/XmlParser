@@ -21,16 +21,19 @@
 
 <body ng-app="myApp">
 <div class="container" ng-controller="ideaCtrl">
-   	<form ng-submit="submit()">
+   	<form ng-submit="convert()">
    		<div class="row">
    			<div class="col-md-10 col-sm-10">
 			    <input type="text" class="form-control" placeholder="Path..." ng-model="path">
    			</div>
    			<div class="col-md-2 col-sm-2">
-			    <button type="submit" class="btn btn-primary">Proccess</button>
+			    <button type="submit" value="submit" id="submit" class="btn btn-primary">Proccess</button>
    			</div>
    		</div>
 	</form>
+	
+	<pre>list={{list}}</pre>
+	
 	<div class="panel panel-default" style="margin-top: 20px;">
 	  <div class="panel-body">
 	    <div class="row" ng-repeat="idea in model.ideas | orderBy: 'votes' : true">
@@ -49,8 +52,8 @@
    <script src="js/stomp.min.js" type="text/javascript"></script>
    <script src="js/showdown.min.js" type="text/javascript"></script>
    <script src="js/app.js" type="text/javascript"></script>
-   <script src="js/service.js" type="text/javascript"></script>
+ <!--   <script src="js/service.js" type="text/javascript"></script>
    <script src="js/filters.js" type="text/javascript"></script>
-   <script src="js/controller.js" type="text/javascript"></script>
+   <script src="js/controllers.js" type="text/javascript"></script> -->
 
 </html>
