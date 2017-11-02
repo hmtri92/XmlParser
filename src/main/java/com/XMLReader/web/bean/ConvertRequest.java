@@ -1,7 +1,13 @@
 package com.XMLReader.web.bean;
 
-public class ConvertRequest {
+import java.io.Serializable;
 
+public class ConvertRequest implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7536169718628407703L;
 	private String path;
 
 	public String getPath() {

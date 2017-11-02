@@ -1,10 +1,15 @@
 package com.XMLReader.entities.report;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConvertReportPOJO {
+public class ConvertReportPOJO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1611906131667166327L;
 	private String message;
 	private List<String> queryNames = new ArrayList<String>();
 	private String path;

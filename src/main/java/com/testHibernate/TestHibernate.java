@@ -1,7 +1,11 @@
 package com.testHibernate;
 
+//import java.util.HashMap;
+//import java.util.Iterator;
 //import java.util.List;
-
+//import java.util.Map;
+//import java.util.Map.Entry;
+//
 //import org.hibernate.Query;
 //import org.hibernate.Session;
 //import org.hibernate.SessionFactory;
@@ -42,14 +46,32 @@ public class TestHibernate {
 //	public void test() {
 //		try {
 //			Query query = getSession().getNamedQuery("getBlkList");
-//			query.setParameter("strClientID", "33712");
-//			List<TestDTO> lst = query.list();
-//			TlsLicAuthDTO lic = (TestDTO) lst.get(0);
+//			Map parameterObject = new HashMap();
+//			parameterObject.put("strClientID", "33712");
+//			query = setParam(query, parameterObject);
 //			
-//			lic.getStrCnt();
+//			List<Object> lst = query.list();
+//			TestDTO lic = (TestDTO) lst.get(0);
+//			
+//			System.out.println(lic.getStrCnt());
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
+//	}
+//	
+//	private Query setParam(Query query, Object parameterObject) {
+//		if (parameterObject instanceof Map) {
+//			Map map = (Map)parameterObject;
+//			
+//			Iterator it = map.entrySet().iterator();
+//			while (it.hasNext()) {
+//				Entry entry = (Entry) it.next();
+//				query.setParameter((String)entry.getKey(), entry.getValue());
+//			}
+//		}
+//		
+//		
+//		return query;
 //	}
 //
 //	public Session getSession() {

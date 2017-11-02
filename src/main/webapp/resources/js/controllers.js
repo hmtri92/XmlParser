@@ -1,15 +1,24 @@
 "use strict";
 
-angular.module("myApp.controllers", []).controller("ideaCtrl", function($scope, $http) {
+angular.module('myApp', []).controller("ideaCtrl", ['$scope', '$http', function($scope, $http) {
+	$scope.list = [];
+	$scope.path = 'D:\workspace_spring\XMLReader\runtest';
 	$scope.convert = function() {
-		var response = $https.post('convert', {path : $scope.itabis.path})
+		var formData = {
+				"path" : $scope.path
+		};
 		
-		response.success(function (data, status, headers, config) {
-			
-		});
+		$scope.list.push(this.path);
 		
-		response.error( function (data, status, headers, config) {
-			
-		});
+		var response = $http.post('convert', formData).then(successCallback, errorCallback);
+		
+		function successCallback(success) {
+			$scope.list.push("Success");
+		};
+		
+		function errorCallback (error) {
+			$scope.list.push("Fail");
+		};
+		
 	  };
-});
+}]);

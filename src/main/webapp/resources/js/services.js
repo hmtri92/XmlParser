@@ -1,4 +1,4 @@
-angular.module("myApp.services", [ "ngResource" ]).factory("Idea", function($resource) {
+angular.module("myApp", [ "ngResource" ]).factory("Idea", function($resource) {
     return $resource("./ideas/:id", {
         id: '@id'
     }, {

@@ -52,8 +52,8 @@
    <script src="js/stomp.min.js" type="text/javascript"></script>
    <script src="js/showdown.min.js" type="text/javascript"></script>
    <script src="js/app.js" type="text/javascript"></script>
- <!--   <script src="js/service.js" type="text/javascript"></script>
+   <script src="js/service.js" type="text/javascript"></script>
    <script src="js/filters.js" type="text/javascript"></script>
-   <script src="js/controllers.js" type="text/javascript"></script> -->
+   <script src="js/controllers.js" type="text/javascript"></script>
 
 </html>
