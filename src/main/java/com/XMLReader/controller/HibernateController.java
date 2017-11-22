@@ -14,7 +14,7 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLStreamReader;
 
 import com.XMLReader.Utilities;
-import com.XMLReader.convert.ConvertIbatisToHibernate;
+import com.XMLReader.convert.IbatisToHibernateConverter;
 import com.XMLReader.entities.XMLEntity;
 import com.XMLReader.entities.hibernate.HibernateEntity;
 import com.XMLReader.entities.ibatis.IbatisEntity;
@@ -94,7 +94,7 @@ public class HibernateController extends BaseController {
 	}
 	
 	public void convertIbatisToHibernate(IbatisController ibatisController) {
-		ConvertIbatisToHibernate converter = new ConvertIbatisToHibernate();
+		IbatisToHibernateConverter converter = new IbatisToHibernateConverter();
 		
 		List<XMLEntity> lstIbatis = ibatisController.getLstEntity();
 		for (XMLEntity xmlEntity : lstIbatis) {

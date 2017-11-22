@@ -7,6 +7,7 @@ import java.util.List;
 public class Reader {
 	
 	List<File> lstFileName = new ArrayList<File>();
+	
 	public List<File> getXMLFiles(String folderPath) {
 		File file = new File(folderPath);
 		File[] files = file.listFiles();

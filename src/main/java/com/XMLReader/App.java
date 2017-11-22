@@ -6,10 +6,16 @@ import com.XMLReader.controller.ControllerFactory;
 import com.XMLReader.controller.HibernateController;
 import com.XMLReader.controller.IbatisController;
 
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class App {
+	
+	/*public static void main(String[] args) {
+		String str="SINH H 123456";
+		String numberOnly= str.replaceAll("[^0-9]", "");
+		System.out.println(numberOnly);
+		
+	}*/
+	
+    public static void main( String[] args )  {
 //    	String dir = "D:/workspaceSpring/XmlParser/runtest";
     	String dir = "D:/workspace_spring/XMLReader/runtest";
     	

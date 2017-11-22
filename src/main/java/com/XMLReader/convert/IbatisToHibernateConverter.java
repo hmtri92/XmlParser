@@ -19,12 +19,14 @@ import com.XMLReader.entities.ibatis.MappedStatement;
 import com.XMLReader.entities.ibatis.ResultMap;
 import com.XMLReader.entities.report.ConvertReportPOJO;
 
-public class ConvertIbatisToHibernate {
+public class IbatisToHibernateConverter {
 	
 	private String filePath = "";
 	ConvertReportPOJO successEnty;
 	ConvertReportPOJO failEnty;
 	
+	// Insert by thuynh40 - Nov 15, 2017
+	// T-TODO Report condition
 	public HibernateEntity convert (IbatisEntity ibatisEntity) {
 		successEnty = new ConvertReportPOJO();
 		failEnty = new ConvertReportPOJO();
@@ -166,6 +168,17 @@ public class ConvertIbatisToHibernate {
 		m.appendTail(sb);
 		
 		return "\n" + sb.toString();
+	}
+	
+	public static void main(String[] args) {
+		String test = "abc,123";
+		String REGEX = ",";
+		String[] result = test.split(REGEX);
+		
+		for (String item : result) {
+			System.out.println(item);			
+		}
+		
 	}
 
 }
