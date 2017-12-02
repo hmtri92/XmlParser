@@ -9,8 +9,6 @@
 	<name>XMLReader</name>
 	<url>http://maven.apache.org</url>
 	
-	<!-- https://g00glen00b.be/spring-websockets-config/ -->
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>4.3.0.RELEASE</spring.version>

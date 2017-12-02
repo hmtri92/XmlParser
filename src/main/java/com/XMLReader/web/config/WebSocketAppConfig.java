@@ -13,6 +13,11 @@ import com.XMLReader.web.controller.NotifyAspect;
 @EnableWebSocketMessageBroker
 public class WebSocketAppConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
+	/**
+	 * We actually have to add an endpoint that can be used by our client to connect on 
+	 * and we also have to define the topic prefix that can be used to publish/subscribe. 
+	 * In this case our configuration
+	 */
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry config) {
 	    config.enableSimpleBroker("/topic");
@@ -24,8 +29,4 @@ public class WebSocketAppConfig extends AbstractWebSocketMessageBrokerConfigurer
 	    registry.addEndpoint("/notify").withSockJS();
 	}
 	
-	@Bean
-	public NotifyAspect notifyAspect() {
-	    return new NotifyAspect();
-	}
 }

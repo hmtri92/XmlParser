@@ -18,9 +18,9 @@ public class HelloWorldService extends LogUtil {
 
 		debug("getTitle() is executed! " + name);
 
-		if(StringUtils.isEmpty(name)){
+		if (StringUtils.isEmpty(name)) {
 			return "Hello World";
-		}else{
+		} else {
 			return "Hello " + name;
 		}
 		

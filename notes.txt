@@ -1,0 +1,16 @@
+** Description
+	- Convert xml query from ibatis to hibernate use jaxb. Query result as name query(native query), skip all DTO result of ibatis query. Dynamic query cannot convert.
+	- Data inbound: *.xml
+	- Data outbound: *.hbm.xml
+	- Test data: /testData/
+
+** Environment: 
+	1. Web backend: java8, tomcat8, spring 4.3.0.RELEASE, websocket 1.1, jackson
+	2. Web UI: Angular, jquery, semantic-ui, sockjs, stomp-websocket
+	3. Convert xml: jaxb
+
+** UI use power
+	1. Setup power: npm install -g power
+	2. Run: power install
+	
+** Web socket base on: https://g00glen00b.be/spring-websockets-config
