@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-/Apache Software Foundation/DTD Struts Configuration 1.1/EN"
+          "http:/jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<form-beans>
+		<form-bean name="AppSearch" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="strLicTypeCd"		type="java.lang.String"/>
+			<form-property name="strClientID"		type="java.lang.String"/>
+			<form-property name="strSrchCompName"		type="java.lang.String"/>
+			<form-property name="strSrchAppName"		type="java.lang.String"/>
+			<form-property name="strSrchFromDt"		type="java.lang.String"/>
+			<form-property name="strSrchToDt"		type="java.lang.String"/>
+			<form-property name="strSrchLicNo"		type="java.lang.String"/>
+			<form-property name="strSrchCallSign"		type="java.lang.String"/>
+			<form-property name="strSrchVessName"		type="java.lang.String"/>
+			<form-property name="strSrchInmarsatA"		type="java.lang.String"/>
+			<form-property name="strSrchInmarsatB"		type="java.lang.String"/>
+			<form-property name="strSrchOtherID"		type="java.lang.String"/>
+			<form-property name="strSrchMMSINo"		type="java.lang.String"/>
+			<form-property name="strSrchTradeName"		type="java.lang.String"/>
+			<form-property name="strSrchModelName"		type="java.lang.String"/>
+			<form-property name="dispatch"			type="java.lang.String"/>
+			<form-property name="strSrchOfficialNo"			type="java.lang.String"/>
+			<!-- comment-->
+		</form-bean>
+
+		<form-bean name="AppLicenceParticularAddEdit" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="strClientID"		type="java.lang.String"/>
+			<form-property name="strTransID"		type="java.lang.String"/>
+			<form-property name="strAppNo"			type="java.lang.String"/>
+			<form-property name="strLicTypeCd"		type="java.lang.String"/>
+			<form-property name="strLicNo"			type="java.lang.String"/>
+			<form-property name="strDealLicNo"		type="java.lang.String"/>
+			<form-property name="strOldDealLicNo"		type="java.lang.String"/>
+			<form-property name="strDealLicDesc"		type="java.lang.String"/>
+			<form-property name="strAppAgentNo"		type="java.lang.String"/>
+			<form-property name="strApplicantNo"		type="java.lang.String"/>
+			<form-property name="strLicenceGroup"		type="java.lang.String"/>
+			<form-property name="strRecDate"		type="java.lang.String"/>
+			<form-property name="strAppDate"		type="java.lang.String"/>
+			<form-property name="strComDate"		type="java.lang.String"/>
+			<form-property name="strSNMReqDate"		type="java.lang.String"/>
+			<form-property name="strSNMAppDate"		type="java.lang.String"/>
+			<form-property name="strClientFileRef"		type="java.lang.String"/>
+			<form-property name="strAsgnUserID"		type="java.lang.String"/>
+			<form-property name="strAsgnDate"		type="java.lang.String"/>
+			<form-property name="strTechDataDate"		type="java.lang.String"/>
+			<form-property name="strIssueDate"		type="java.lang.String"/>
+			<form-property name="strExpiryDate"		type="java.lang.String"/>
+			<form-property name="strStsCd"			type="java.lang.String"/>
+			<form-property name="strFeeCd"			type="java.lang.String"/>
+			<form-property name="strNetFeeCd"		type="java.lang.String"/>
+			<!-- Start: Raymond :28Apr15 For Courier Fee--> 
+			<form-property name="strCourierFeeCd"		type="java.lang.String"/>
+			<form-property name="strModCourierFeeInd"	type="java.lang.String"/>
+			<!-- End: Raymond -->
+			<form-property name="strProcessingFee"		type="java.lang.String"/>
+			<form-property name="strPayCd"			type="java.lang.String"/>
+			<form-property name="strAmtRec"			type="java.lang.String"/>
+			<form-property name="strPayDesc"		type="java.lang.String"/>
+			<form-property name="strLicencePeriod"		type="java.lang.String"/>
+			<form-property name="strRenewalPeriod"		type="java.lang.String"/>
+			<form-property name="strFinPeriodSt1"		type="java.lang.String"/>
+			<form-property name="strFinPeriodSt2"		type="java.lang.String"/>
+			<form-property name="strFinPeriodSt3"		type="java.lang.String"/>
+			<form-property name="strFinPeriodEnd"		type="java.lang.String"/>
+			<form-property name="strSchemeTypeCd"		type="java.lang.String"/>
+			<form-property name="strReqClarDate"		type="java.lang.String"/>
+			<form-property name="strRecClarDate"		type="java.lang.String"/>
+			<form-property name="strLicenceReq"		type="java.lang.String"/>
+			<form-property name="strTempLicence"		type="java.lang.String"/>
+			<form-property name="strRevBefRen"		type="java.lang.String"/>
+			<form-property name="strPreTypeCd"		type="java.lang.String"/>
+			<form-property name="strGiroInd"		type="java.lang.String"/>
+			<form-property name="strDiscountInd"		type="java.lang.String"/>
+			<form-property name="strModLicFeeInd"		type="java.lang.String"/>
+			<form-property name="strModNetFeeInd"		type="java.lang.String"/>
+			<form-property name="strTransType"		type="java.lang.String"/>
+			<form-property name="strCorCompToDis"		type="java.lang.String"/>
+			<form-property name="strCorConPer"		type="java.lang.String"/>
+			<form-property name="strCorDesig"		type="java.lang.String"/>
+			<form-property name="strCorTelNo"		type="java.lang.String"/>
+			<form-property name="strCorFaxNo"		type="java.lang.String"/>
+			<form-property name="strCorMobileNo"		type="java.lang.String"/>
+			<form-property name="strCorPagerNo"		type="java.lang.String"/>
+			<form-property name="strCorEmail"		type="java.lang.String"/>
+			<form-property name="strCorAdd1"		type="java.lang.String"/>
+			<form-property name="strCorAdd2"		type="java.lang.String"/>
+			<form-property name="strCorAdd3"		type="java.lang.String"/>
+			<form-property name="strCorCountry"		type="java.lang.String"/>
+			<form-property name="strCorPostalCd"		type="java.lang.String"/>
+			<form-property name="strChkCopy"		type="java.lang.String"/>
+			<form-property name="strBizCompToDis"		type="java.lang.String"/>
+			<form-property name="strBizConPer"		type="java.lang.String"/>
+			<form-property name="strBizDesig"		type="java.lang.String"/>
+			<form-property name="strBizTelNo"		type="java.lang.String"/>
+			<form-property name="strBizFaxNo"		type="java.lang.String"/>
+			<form-property name="strBizMobileNo"		type="java.lang.String"/>
+			<form-property name="strBizPagerNo"		type="java.lang.String"/>
+			<form-property name="strBizEmail"		type="java.lang.String"/>
+			<form-property name="strBizAdd1"		type="java.lang.String"/>
+			<form-property name="strBizAdd2"		type="java.lang.String"/>
+			<form-property name="strBizAdd3"		type="java.lang.String"/>
+			<form-property name="strBizCountry"		type="java.lang.String"/>
+			<form-property name="strBizPostalCd"		type="java.lang.String"/>
+			<form-property name="strLocCompToDis"		type="java.lang.String"/>
+			<form-property name="strLocConPer"		type="java.lang.String"/>
+			<form-property name="strLocDesig"		type="java.lang.String"/>
+			<form-property name="strLocTelNo"		type="java.lang.String"/>
+			<form-property name="strLocFaxNo"		type="java.lang.String"/>
+			<form-property name="strLocMobileNo"		type="java.lang.String"/>
+			<form-property name="strLocEmail"		type="java.lang.String"/>
+			<form-property name="strLocAdd1"		type="java.lang.String"/>
+			<form-property name="strLocAdd2"		type="java.lang.String"/>
+			<form-property name="strLocAdd3"		type="java.lang.String"/>
+			<form-property name="strLocCountry"		type="java.lang.String"/>
+			<form-property name="strLocPostalCd"		type="java.lang.String"/>
+			<form-property name="strSNMReq"			type="java.lang.String"/>
+			<form-property name="strSNMRemarks"		type="java.lang.String"/>
+			<form-property name="strRemarks"		type="java.lang.String"/>
+			<form-property name="strEmailRemarks"		type="java.lang.String"/>
+			<form-property name="strRequiredInformationWillBeAttached"		type="java.lang.String"/>
+			<form-property name="strProSysUsed"		type="java.lang.String"/>
+			<form-property name="strCreBy"			type="java.lang.String"/>
+			<form-property name="strUpdBy"			type="java.lang.String"/>
+			<form-property name="dispatch"			type="java.lang.String"/>
+			<form-property name="pgfwd"			type="java.lang.String" />
+			<form-property name="actDispatch"		type="java.lang.String" />
+			<form-property name="strPubContNo"		type="java.lang.String" />
+			<form-property name="strBillAddSMSAlertInd"	  type="java.lang.String" />
+			<form-property name="strBillAddEmailAlertInd" type="java.lang.String" />
+            <form-property name="strAnnualFeeReqInd" type="java.lang.String" />
+            <form-property name="strGratisInd"		type="java.lang.String" />
+            
+			<form-property name="strCountryCodeLocTelNo"		type="java.lang.String"/>
+			<form-property name="strCountryCodeLocFaxNo"		type="java.lang.String"/>
+			<form-property name="strCountryCodeLocMobileNo"		type="java.lang.String"/>
+			<form-property name="strCountryCodeBizTelNo"		type="java.lang.String"/>
+			<form-property name="strCountryCodeBizFaxNo"		type="java.lang.String"/>
+			<form-property name="strCountryCodeBizMobileNo"		type="java.lang.String"/>
+			<form-property name="strCountryCodeCorTelNo"		type="java.lang.String"/>
+			<form-property name="strCountryCodeCorFaxNo"		type="java.lang.String"/>
+			<form-property name="strCountryCodeCorMobileNo"		type="java.lang.String"/>
+			<form-property name="strCountryCodePubContNo"		type="java.lang.String"/>
+			<form-property name="strCountryCodeBizPagerNo"		type="java.lang.String"/>
+			<form-property name="strCountryCodeCorPagerNo"		type="java.lang.String"/>
+		</form-bean>
+		 
+	</form-beans>
+
+	<action-mappings>
+		<action
+			path="/AppSearchAction"
+			type=".action.applications.applicationdetails.AppLicenceParticularAction"
+			name="AppSearch"
+			scope="request"
+			validate="false"
+			parameter="dispatch">
+			<forward name="searchApp" path="/applications/applicationdetails/AppSearch.jsp"/>
+			<forward name="listApp" path="/applications/applicationdetails/AppList.jsp"/>
+		</action>
+
+		<action 
+			path="/AppLicenceParticularAction"
+			type=".action.applications.applicationdetails.AppLicenceParticularAction"
+			name="AppLicenceParticularAddEdit"
+			scope="request"
+			validate="false"
+			parameter="dispatch">
+			<forward name="addAppLicence" path="/applications/applicationdetails/AppLicenceParticularAddEdit.jsp"/>
+			<forward name="addTACAppLicence" path="/applications/applicationdetails/AppTACLicenceParticular.jsp"/>
+			<forward name="success" path="/AppSearchAction.do?dispatch=listAppDetails"/>
+			<forward name="savesuccess" path="/common/CommonSuccess.jsp"/>
+			<forward name="failure" path="/AppSearchAction.do?dispatch=listAppDetails"/>
+			<forward name="viewAppLicPrintInfo" path="/applications/applicationdetails/AppLicencePrintInfo.jsp"/>
+			<forward name="sendApprovalEmailSuccess" path="/common/CommonSuccess.jsp"/>
+		</action>
+		
+	</action-mappings>
+	
+    <message-resources parameter=".resources.ClientResources" key="client"/>
+
+</struts-config>

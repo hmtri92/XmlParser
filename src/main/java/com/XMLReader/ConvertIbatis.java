@@ -6,7 +6,7 @@ import com.XMLReader.controller.ControllerFactory;
 import com.XMLReader.controller.HibernateController;
 import com.XMLReader.controller.IbatisController;
 
-public class App {
+public class ConvertIbatis {
 	
 	/*public static void main(String[] args) {
 		String str="SINH H 123456";
@@ -29,11 +29,11 @@ public class App {
 			HibernateController hibernate = new HibernateController(ibatis);
 			hibernate.marshalAll();
 			
-			Logger logger = Logger.getLogger(App.class);
+			Logger logger = Logger.getLogger(ConvertIbatis.class);
 			logger.info(Utilities.report.print());
 			
 		} catch (Exception e) {
-			Logger logger = Logger.getLogger(App.class);
+			Logger logger = Logger.getLogger(ConvertIbatis.class);
 			logger.error("main error", e);
 		}
     }
