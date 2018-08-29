@@ -72,7 +72,7 @@ public class ClassBuilder {
 		methodName.append(formProperty.getName().substring(1));
 		
 		MethodSpec getter = MethodSpec.methodBuilder(methodName.toString())
-				.addStatement("return $S", formProperty.getName())
+				.addStatement("return this.$N", formProperty.getName())
 				.build();
 		
 		return getter;
