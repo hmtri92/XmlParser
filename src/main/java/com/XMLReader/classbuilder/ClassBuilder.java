@@ -1,6 +1,7 @@
 package com.XMLReader.classbuilder;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 
 import javax.lang.model.element.Modifier;
 
@@ -17,7 +18,6 @@ public class ClassBuilder {
 	private final String CLASS_SUPFIX = "Form";
 	private final String METHOD_REFIX_GET = "get";
 	private final String METHOD_REFIX_SET = "set";
-	private final String STRING = "java.lang.String";
 	
 	public void buildFormBean(StrutsConfig strutsConfig) {
 		strutsConfig.getFormBeans().getLstFormBean().forEach(formBean -> {
@@ -37,15 +37,32 @@ public class ClassBuilder {
 	
 	private void addAttribute(FormBean formBean, Builder classBuilder) {
 		formBean.getLstProperties().forEach(property -> {
-			if (STRING.equals(property.getType())) {
-				classBuilder.addField(String.class, property.getName(), Modifier.PRIVATE)
-					.addMethod(createSetMethod(property))
-					.addMethod(createGetMethod(property));
+			try {
+				String dataType = property.getType();
+				Class<?> clazz = null;
+				
+				if (dataType != null) {
+					if (dataType.contains("[]")) {
+						dataType = dataType.substring(0, dataType.length() - 2);
+						Class tempClass = Class.forName(dataType);
+						clazz = Array.newInstance(tempClass, 0).getClass();
+					} else {
+						clazz = Class.forName(dataType);
+					}
+				}
+				
+				classBuilder.addField(clazz, property.getName(), Modifier.PRIVATE)
+					.addMethod(createSetMethod(property, clazz))
+					.addMethod(createGetMethod(property, clazz));
+				
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
 			}
+			
 		});
 	}
 	
-	private MethodSpec createSetMethod(FormProperty formProperty) {
+	private MethodSpec createSetMethod(FormProperty formProperty, Class<?> clazz) {
 		StringBuilder methodName = new StringBuilder();
 		methodName.append(METHOD_REFIX_SET);
 		methodName.append(formProperty.getName().substring(0, 1).toUpperCase());
@@ -60,14 +77,14 @@ public class ClassBuilder {
 		MethodSpec setter = MethodSpec.methodBuilder(methodName.toString())
 				.addModifiers(Modifier.PUBLIC)
 				.returns(void.class)
-				.addParameter(String.class, formProperty.getName())
+				.addParameter(clazz, formProperty.getName())
 				.addStatement(statement.toString())
 				.build();
 		
 		return setter;
 	}
 	
-	private MethodSpec createGetMethod(FormProperty formProperty) {
+	private MethodSpec createGetMethod(FormProperty formProperty, Class<?> clazz) {
 		StringBuilder methodName = new StringBuilder();
 		methodName.append(METHOD_REFIX_GET);
 		methodName.append(formProperty.getName().substring(0, 1).toUpperCase());
@@ -75,7 +92,7 @@ public class ClassBuilder {
 		
 		MethodSpec getter = MethodSpec.methodBuilder(methodName.toString())
 				.addModifiers(Modifier.PUBLIC)
-				.returns(String.class)
+				.returns(clazz)
 				.addStatement("return this.$N", formProperty.getName())
 				.build();
 		
