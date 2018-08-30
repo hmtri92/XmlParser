@@ -1,5 +1,6 @@
 package com.XMLReader.classbuilder;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
 
@@ -8,20 +9,24 @@ import javax.lang.model.element.Modifier;
 import com.XMLReader.entities.struts.FormBean;
 import com.XMLReader.entities.struts.FormProperty;
 import com.XMLReader.entities.struts.StrutsConfig;
-import com.squareup.javapoet.TypeSpec.Builder;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
+import com.squareup.javapoet.TypeSpec.Builder;
 
 public class ClassBuilder {
 	
 	private final String CLASS_SUPFIX = "Form";
 	private final String METHOD_REFIX_GET = "get";
 	private final String METHOD_REFIX_SET = "set";
+	private final String PATH = "D:\\workspaceSpring\\XmlParser\\runtest\\";
 	
 	public void buildFormBean(StrutsConfig strutsConfig) {
 		strutsConfig.getFormBeans().getLstFormBean().forEach(formBean -> {
-			Builder classBuilder = TypeSpec.classBuilder(formBean.getName() + CLASS_SUPFIX).addModifiers(Modifier.PUBLIC);
+			
+			String className = formBean.getName() + CLASS_SUPFIX;
+			
+			Builder classBuilder = TypeSpec.classBuilder(className).addModifiers(Modifier.PUBLIC);
 			addAttribute(formBean, classBuilder);
 			
 			TypeSpec formClass = classBuilder.build();
@@ -29,6 +34,7 @@ public class ClassBuilder {
 			
 			try {
 				javaFile.writeTo(System.out);
+				writeFile(javaFile);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -44,7 +50,7 @@ public class ClassBuilder {
 				if (dataType != null) {
 					if (dataType.contains("[]")) {
 						dataType = dataType.substring(0, dataType.length() - 2);
-						Class tempClass = Class.forName(dataType);
+						Class<?> tempClass = Class.forName(dataType);
 						clazz = Array.newInstance(tempClass, 0).getClass();
 					} else {
 						clazz = Class.forName(dataType);
@@ -99,25 +105,10 @@ public class ClassBuilder {
 		return getter;
 	}
 	
-	
-	public static void main(String[] args) {
-		MethodSpec main = MethodSpec.methodBuilder("main")
-				.addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-				.returns(void.class)
-				.addParameter(String[].class, "args")
-				.addStatement("$T.out.println($S)", System.class, "Hello, JavaPoet!")
-				.build();
-		
-		TypeSpec helloWorld = TypeSpec.classBuilder("HelloWorld")
-				.addModifiers(Modifier.PUBLIC, Modifier.FINAL)
-				.addField(String.class, "greeting", Modifier.PRIVATE, Modifier.FINAL)
-				.addMethod(main)
-				.build();
-		
-		JavaFile javaFile = JavaFile.builder("com.example.helloworld", helloWorld).build();
-		
+	private void writeFile(JavaFile javaFile) {
 		try {
-			javaFile.writeTo(System.out);
+			File directory = new File(PATH);
+			javaFile.writeTo(directory);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

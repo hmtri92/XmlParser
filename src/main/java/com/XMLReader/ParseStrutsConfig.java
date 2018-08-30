@@ -2,7 +2,6 @@ package com.XMLReader;
 
 import org.apache.log4j.Logger;
 
-import com.XMLReader.classbuilder.ClassBuilder;
 import com.XMLReader.controller.ControllerFactory;
 import com.XMLReader.controller.StrutsConfigController;
 
