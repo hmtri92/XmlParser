@@ -39,7 +39,7 @@ public class ClassBuilder {
 		formBean.getLstProperties().forEach(property -> {
 			try {
 				String dataType = property.getType();
-				Class<?> clazz = null;
+				Class<?> clazz = void.class;
 				
 				if (dataType != null) {
 					if (dataType.contains("[]")) {
