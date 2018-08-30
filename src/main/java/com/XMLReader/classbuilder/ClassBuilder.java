@@ -58,6 +58,8 @@ public class ClassBuilder {
 		statement.append(formProperty.getName());
 		
 		MethodSpec setter = MethodSpec.methodBuilder(methodName.toString())
+				.addModifiers(Modifier.PUBLIC)
+				.returns(void.class)
 				.addParameter(String.class, formProperty.getName())
 				.addStatement(statement.toString())
 				.build();
@@ -72,6 +74,8 @@ public class ClassBuilder {
 		methodName.append(formProperty.getName().substring(1));
 		
 		MethodSpec getter = MethodSpec.methodBuilder(methodName.toString())
+				.addModifiers(Modifier.PUBLIC)
+				.returns(String.class)
 				.addStatement("return this.$N", formProperty.getName())
 				.build();
 		
